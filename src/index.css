@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "Cairo", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Custom Dark Mode Theme Overrides */
+  --color-zinc-950: rgb(17, 24, 39);
+  --color-zinc-900: rgb(31, 41, 55);
+  --color-zinc-800: rgb(55, 65, 81);
+  --color-zinc-700: rgb(75, 85, 99);
+  
+  --animate-blob: blob 7s infinite;
+  
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/* Custom Scrollbar for Pricing Component */
+.pricing-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.pricing-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.pricing-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #0f766e; /* teal-700 */
+  border-radius: 10px;
+}
+.dark .pricing-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #0d9488; /* teal-600 */
+}

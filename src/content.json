@@ -1,0 +1,468 @@
+{
+  "brand": {
+    "logoUrl": "https://skooture.ai/storage/super-admin/system-settings/69738ddd57f6d9.609751151769180637.png"
+  },
+  "hero": {
+    "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-connection-background-27896-large.mp4",
+    "headline": {
+      "en": "Building the future of education since 2010—Reimagined for the AI Era.",
+      "ar": "نبني مستقبل التعليم منذ 2010 - أعدنا تصوره لعصر الذكاء الاصطناعي."
+    },
+    "subheadline": {
+      "en": "From serving millions with Smart Schools to pioneering a global AI infrastructure. Skooture is the next evolution in EdTech.",
+      "ar": "من خدمة الملايين عبر المدارس الذكية إلى ريادة بنية تحتية عالمية للذكاء الاصطناعي. سكوتر هو التطور القادم في تكنولوجيا التعليم."
+    },
+    "buttons": {
+      "demo": {
+        "en": "Book a Demo",
+        "ar": "احجز عرضاً تجريبياً"
+      },
+      "explore": {
+        "en": "Explore Platform",
+        "ar": "استكشف المنصة"
+      }
+    }
+  },
+  "partners": {
+    "title": {
+      "en": "Trusted by 49+ Educational Leaders",
+      "ar": "موثوق من قبل أكثر من 49 مؤسسة تعليمية رائدة"
+    },
+    "logos": [
+      "https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/google.svg",
+      "https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/ibm.svg",
+      "https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/microsoft.svg",
+      "https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/aws.svg",
+      "https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/intel.svg",
+      "https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/samsung.svg"
+    ]
+  },
+  "traction": {
+    "entities": {
+      "value": 49,
+      "label": {
+        "en": "Educational Entities",
+        "ar": "كيان تعليمي"
+      }
+    },
+    "students": {
+      "value": 120000,
+      "label": {
+        "en": "Active Students",
+        "ar": "طالب نشط"
+      }
+    },
+    "teachers": {
+      "value": 10000,
+      "label": {
+        "en": "Teachers",
+        "ar": "معلم"
+      }
+    },
+    "staff": {
+      "value": 1500,
+      "label": {
+        "en": "Staff",
+        "ar": "موظف"
+      }
+    },
+    "parents": {
+      "value": 240000,
+      "label": {
+        "en": "Parents",
+        "ar": "ولي أمر"
+      }
+    },
+    "total": {
+      "value": 500000,
+      "label": {
+        "en": "Total Users",
+        "ar": "إجمالي المستخدمين"
+      }
+    },
+    "arr": {
+      "value": 290000,
+      "label": {
+        "en": "ARR ($)",
+        "ar": "الإيرادات السنوية ($)"
+      }
+    }
+  },
+  "legacy": {
+    "title": {
+      "en": "Our Legacy",
+      "ar": "إرثنا"
+    },
+    "items": [
+      {
+        "year": "2010",
+        "title": {
+          "en": "Smart Schools Founded",
+          "ar": "تأسيس المدارس الذكية"
+        },
+        "description": {
+          "en": "Launched our first school management system, serving millions of users across the region.",
+          "ar": "أطلقنا أول نظام لإدارة المدارس، لخدمة الملايين من المستخدمين في جميع أنحاء المنطقة."
+        }
+      },
+      {
+        "year": "2024",
+        "title": {
+          "en": "The Skooture Pivot",
+          "ar": "التحول إلى سكوتر"
+        },
+        "description": {
+          "en": "Rebuilding from the ground up for global scale and deep AI integration.",
+          "ar": "إعادة البناء من الصفر للتوسع العالمي والدمج العميق للذكاء الاصطناعي."
+        }
+      }
+    ]
+  },
+  "why": {
+    "title": {
+      "en": "Why We Rebuilt",
+      "ar": "لماذا أعدنا البناء"
+    },
+    "content": {
+      "en": "We realized that incremental updates to legacy systems wouldn't suffice for the next generation of learning. We needed a scalable, global AI infrastructure to serve the next billion learners efficiently and intelligently.",
+      "ar": "أدركنا أن التحديثات التدريجية للأنظمة القديمة لن تكفي للجيل القادم من التعلم. كنا بحاجة إلى بنية تحتية عالمية قابلة للتوسع تعتمد على الذكاء الاصطناعي لخدمة المليار متعلم القادم بكفاءة وذكاء."
+    }
+  },
+  "global": {
+    "title": {
+      "en": "Global Presence",
+      "ar": "التواجد العالمي"
+    },
+    "locations": [
+      {
+        "name": {
+          "en": "Egypt",
+          "ar": "مصر"
+        }
+      },
+      {
+        "name": {
+          "en": "UAE",
+          "ar": "الإمارات"
+        }
+      },
+      {
+        "name": {
+          "en": "London",
+          "ar": "لندن"
+        }
+      }
+    ]
+  },
+  "aiCore": {
+    "title": {
+      "en": "AI at the Core",
+      "ar": "الذكاء الاصطناعي في الجوهر"
+    },
+    "features": [
+      {
+        "title": {
+          "en": "Academic",
+          "ar": "أكاديمي"
+        },
+        "description": {
+          "en": "Personalized learning paths, predictive analytics for student success, and automated content generation.",
+          "ar": "مسارات تعلم مخصصة، وتحليلات تنبؤية لنجاح الطلاب، وإنشاء محتوى آلي."
+        }
+      },
+      {
+        "title": {
+          "en": "Operations",
+          "ar": "العمليات"
+        },
+        "description": {
+          "en": "Automated scheduling, intelligent resource allocation, and streamlined administrative workflows.",
+          "ar": "جدولة آلية، وتوزيع ذكي للموارد، وسير عمل إداري مبسط."
+        }
+      },
+      {
+        "title": {
+          "en": "Communication",
+          "ar": "التواصل"
+        },
+        "description": {
+          "en": "Intelligent sentiment analysis, automated reporting, and proactive parent engagement tools.",
+          "ar": "تحليل ذكي للمشاعر، وتقارير آلية، وأدوات استباقية لإشراك أولياء الأمور."
+        }
+      }
+    ]
+  },
+  "topFeatures": {
+    "title": {
+      "en": "Explore Our Top Features",
+      "ar": "اكتشف أهم ميزاتنا"
+    },
+    "buttonMore": {
+      "en": "View More Features",
+      "ar": "عرض المزيد من الميزات"
+    },
+    "buttonLess": {
+      "en": "View Less Features",
+      "ar": "عرض ميزات أقل"
+    },
+    "items": [
+      { "en": "Student Management", "ar": "إدارة الطلاب" },
+      { "en": "Academics Management", "ar": "إدارة الشؤون الأكاديمية" },
+      { "en": "Slider Management", "ar": "إدارة شريط التمرير" },
+      { "en": "Teacher Management", "ar": "إدارة المعلمين" },
+      { "en": "Session Year Management", "ar": "إدارة السنة الدراسية" },
+      { "en": "Holiday Management", "ar": "إدارة العطلات" },
+      { "en": "Timetable Management", "ar": "إدارة الجداول الزمنية" },
+      { "en": "Attendance Management", "ar": "إدارة الحضور" },
+      { "en": "Exam Management", "ar": "إدارة الامتحانات" },
+      { "en": "Lesson Management", "ar": "إدارة الدروس" },
+      { "en": "Assignment Management", "ar": "إدارة الواجبات" },
+      { "en": "Announcement Management", "ar": "إدارة الإعلانات" },
+      { "en": "Staff Management", "ar": "إدارة الموظفين" },
+      { "en": "Expense Management", "ar": "إدارة النفقات" },
+      { "en": "Staff Leave Management", "ar": "إدارة إجازات الموظفين" },
+      { "en": "Fees Management", "ar": "إدارة الرسوم" },
+      { "en": "School Gallery Management", "ar": "إدارة معرض المدرسة" },
+      { "en": "ID Card - Certificate Generation", "ar": "إصدار البطاقات والشهادات" },
+      { "en": "Website Management", "ar": "إدارة الموقع الإلكتروني" },
+      { "en": "Chat Module", "ar": "وحدة الدردشة" },
+      { "en": "Transportation Module", "ar": "وحدة النقل" },
+      { "en": "Staff Attendance Management", "ar": "إدارة حضور الموظفين" }
+    ]
+  },
+  "bentoFeatures": {
+    "title": {
+      "en": "The Complete AI Education Ecosystem",
+      "ar": "نظام تعليمي متكامل مدعوم بالذكاء الاصطناعي"
+    },
+    "features": [
+      {
+        "title": { "en": "Personalized Learning Paths", "ar": "مسارات تعليمية مخصصة" },
+        "description": { "en": "AI adapts to each student's pace and learning style in real-time.", "ar": "يتكيف الذكاء الاصطناعي مع سرعة وأسلوب تعلم كل طالب في الوقت الفعلي." }
+      },
+      {
+        "title": { "en": "Predictive Analytics", "ar": "تحليلات تنبؤية" },
+        "description": { "en": "Identify at-risk students before they fall behind with 95% accuracy.", "ar": "تحديد الطلاب المعرضين للخطر قبل تأخرهم بدقة تصل إلى 95%." }
+      },
+      {
+        "title": { "en": "Automated Grading", "ar": "تصحيح آلي" },
+        "description": { "en": "Save teachers 15+ hours a week with intelligent assessment tools.", "ar": "توفير أكثر من 15 ساعة أسبوعياً للمعلمين باستخدام أدوات التقييم الذكية." }
+      },
+      {
+        "title": { "en": "Real-time Parent Insights", "ar": "رؤى فورية لأولياء الأمور" },
+        "description": { "en": "Keep parents engaged with automated, actionable progress reports.", "ar": "إبقاء أولياء الأمور على اطلاع بتقارير تقدم تلقائية وقابلة للتنفيذ." }
+      }
+    ]
+  },
+  "testimonials": {
+    "title": {
+      "en": "Trusted by Educational Leaders",
+      "ar": "موثوق من قبل قادة التعليم"
+    },
+    "items": [
+      {
+        "quote": { "en": "Skooture.AI transformed how our teachers interact with students. The insights are unprecedented.", "ar": "لقد غير Skooture.AI طريقة تفاعل معلمينا مع الطلاب. الرؤى التي يقدمها غير مسبوقة." },
+        "author": { "en": "Dr. Sarah Jenkins", "ar": "د. سارة جينكينز" },
+        "role": { "en": "School Principal, London", "ar": "مديرة مدرسة، لندن" }
+      },
+      {
+        "quote": { "en": "The predictive analytics helped us increase student retention by 40% in just one academic year.", "ar": "ساعدتنا التحليلات التنبؤية في زيادة نسبة احتفاظ الطلاب بنسبة 40% في عام دراسي واحد فقط." },
+        "author": { "en": "Ahmed Al-Mansoori", "ar": "أحمد المنصوري" },
+        "role": { "en": "Director of Education, UAE", "ar": "مدير التعليم، الإمارات" }
+      },
+      {
+        "quote": { "en": "Finally, a system that understands what teachers actually need. It's like having an AI teaching assistant.", "ar": "أخيراً، نظام يفهم ما يحتاجه المعلمون حقاً. الأمر أشبه بوجود مساعد تدريس يعمل بالذكاء الاصطناعي." },
+        "author": { "en": "Elena Rodriguez", "ar": "إيلينا رودريغيز" },
+        "role": { "en": "Head of STEM", "ar": "رئيسة قسم العلوم والتكنولوجيا" }
+      }
+    ]
+  },
+  "pricing": {
+    "title": {
+      "en": "Flexible Pricing Packages",
+      "ar": "باقات أسعار مرنة"
+    },
+    "button": {
+      "en": "Get Started",
+      "ar": "ابدأ الآن"
+    },
+    "plans": [
+      {
+        "name": { "en": "Basic Plan", "ar": "الخطة الأساسية" },
+        "badge": { "en": "Prepaid", "ar": "دفع مسبق" },
+        "details": [
+          { "en": "200 Student Limit", "ar": "حد 200 طالب" },
+          { "en": "100 Staff Limit", "ar": "حد 100 موظف" },
+          { "en": "$ 49.00 Package Amount", "ar": "قيمة الباقة 49.00 دولار" },
+          { "en": "30 Days", "ar": "30 يوم" }
+        ],
+        "features": [
+          { "name": { "en": "Student Management", "ar": "إدارة الطلاب" }, "included": true },
+          { "name": { "en": "Academics Management", "ar": "إدارة الشؤون الأكاديمية" }, "included": true },
+          { "name": { "en": "Slider Management", "ar": "إدارة شريط التمرير" }, "included": false },
+          { "name": { "en": "Teacher Management", "ar": "إدارة المعلمين" }, "included": true },
+          { "name": { "en": "Session Year Management", "ar": "إدارة السنة الدراسية" }, "included": true },
+          { "name": { "en": "Holiday Management", "ar": "إدارة العطلات" }, "included": true },
+          { "name": { "en": "Timetable Management", "ar": "إدارة الجداول الزمنية" }, "included": false },
+          { "name": { "en": "Attendance Management", "ar": "إدارة الحضور" }, "included": true },
+          { "name": { "en": "Exam Management", "ar": "إدارة الامتحانات" }, "included": false },
+          { "name": { "en": "Lesson Management", "ar": "إدارة الدروس" }, "included": false },
+          { "name": { "en": "Assignment Management", "ar": "إدارة الواجبات" }, "included": true },
+          { "name": { "en": "Library Management", "ar": "إدارة المكتبة" }, "included": false },
+          { "name": { "en": "Hostel Management", "ar": "إدارة السكن" }, "included": false },
+          { "name": { "en": "Parent Portal", "ar": "بوابة أولياء الأمور" }, "included": true },
+          { "name": { "en": "Custom Domain", "ar": "نطاق مخصص" }, "included": false },
+          { "name": { "en": "Priority Support", "ar": "دعم فني ذو أولوية" }, "included": false },
+          { "name": { "en": "Advanced Analytics", "ar": "تحليلات متقدمة" }, "included": false },
+          { "name": { "en": "Data Export", "ar": "تصدير البيانات" }, "included": false }
+        ],
+        "highlighted": false
+      },
+      {
+        "name": { "en": "Standard", "ar": "الخطة القياسية" },
+        "badge": { "en": "Prepaid", "ar": "دفع مسبق" },
+        "details": [
+          { "en": "500 Student Limit", "ar": "حد 500 طالب" },
+          { "en": "100 Staff Limit", "ar": "حد 100 موظف" },
+          { "en": "$ 99.00 Package Amount", "ar": "قيمة الباقة 99.00 دولار" },
+          { "en": "30 Days", "ar": "30 يوم" }
+        ],
+        "features": [
+          { "name": { "en": "Student Management", "ar": "إدارة الطلاب" }, "included": true },
+          { "name": { "en": "Academics Management", "ar": "إدارة الشؤون الأكاديمية" }, "included": true },
+          { "name": { "en": "Slider Management", "ar": "إدارة شريط التمرير" }, "included": true },
+          { "name": { "en": "Teacher Management", "ar": "إدارة المعلمين" }, "included": true },
+          { "name": { "en": "Session Year Management", "ar": "إدارة السنة الدراسية" }, "included": true },
+          { "name": { "en": "Holiday Management", "ar": "إدارة العطلات" }, "included": true },
+          { "name": { "en": "Timetable Management", "ar": "إدارة الجداول الزمنية" }, "included": true },
+          { "name": { "en": "Attendance Management", "ar": "إدارة الحضور" }, "included": true },
+          { "name": { "en": "Exam Management", "ar": "إدارة الامتحانات" }, "included": false },
+          { "name": { "en": "Lesson Management", "ar": "إدارة الدروس" }, "included": true },
+          { "name": { "en": "Assignment Management", "ar": "إدارة الواجبات" }, "included": true },
+          { "name": { "en": "Library Management", "ar": "إدارة المكتبة" }, "included": true },
+          { "name": { "en": "Hostel Management", "ar": "إدارة السكن" }, "included": false },
+          { "name": { "en": "Parent Portal", "ar": "بوابة أولياء الأمور" }, "included": true },
+          { "name": { "en": "Custom Domain", "ar": "نطاق مخصص" }, "included": false },
+          { "name": { "en": "Priority Support", "ar": "دعم فني ذو أولوية" }, "included": false },
+          { "name": { "en": "Advanced Analytics", "ar": "تحليلات متقدمة" }, "included": false },
+          { "name": { "en": "Data Export", "ar": "تصدير البيانات" }, "included": true }
+        ],
+        "highlighted": false
+      },
+      {
+        "name": { "en": "Pro Plan", "ar": "الخطة الاحترافية" },
+        "badge": { "en": "Postpaid", "ar": "دفع آجل" },
+        "details": [
+          { "en": "$ 1.00 Per Student Charges", "ar": "1.00 دولار لكل طالب" },
+          { "en": "$ 0.00 Per Staff Charges", "ar": "0.00 دولار لكل موظف" },
+          { "en": "30 Days", "ar": "30 يوم" }
+        ],
+        "features": [
+          { "name": { "en": "Student Management", "ar": "إدارة الطلاب" }, "included": true },
+          { "name": { "en": "Academics Management", "ar": "إدارة الشؤون الأكاديمية" }, "included": true },
+          { "name": { "en": "Slider Management", "ar": "إدارة شريط التمرير" }, "included": true },
+          { "name": { "en": "Teacher Management", "ar": "إدارة المعلمين" }, "included": true },
+          { "name": { "en": "Session Year Management", "ar": "إدارة السنة الدراسية" }, "included": true },
+          { "name": { "en": "Holiday Management", "ar": "إدارة العطلات" }, "included": true },
+          { "name": { "en": "Timetable Management", "ar": "إدارة الجداول الزمنية" }, "included": true },
+          { "name": { "en": "Attendance Management", "ar": "إدارة الحضور" }, "included": true },
+          { "name": { "en": "Exam Management", "ar": "إدارة الامتحانات" }, "included": true },
+          { "name": { "en": "Lesson Management", "ar": "إدارة الدروس" }, "included": true },
+          { "name": { "en": "Assignment Management", "ar": "إدارة الواجبات" }, "included": true },
+          { "name": { "en": "Library Management", "ar": "إدارة المكتبة" }, "included": true },
+          { "name": { "en": "Hostel Management", "ar": "إدارة السكن" }, "included": true },
+          { "name": { "en": "Parent Portal", "ar": "بوابة أولياء الأمور" }, "included": true },
+          { "name": { "en": "Custom Domain", "ar": "نطاق مخصص" }, "included": true },
+          { "name": { "en": "Priority Support", "ar": "دعم فني ذو أولوية" }, "included": false },
+          { "name": { "en": "Advanced Analytics", "ar": "تحليلات متقدمة" }, "included": true },
+          { "name": { "en": "Data Export", "ar": "تصدير البيانات" }, "included": true }
+        ],
+        "highlighted": true
+      },
+      {
+        "name": { "en": "Premium (Full Suite)", "ar": "الخطة الشاملة (بريميوم)" },
+        "badge": { "en": "Postpaid", "ar": "دفع آجل" },
+        "details": [
+          { "en": "$ 0.50 Per Student Charges", "ar": "0.50 دولار لكل طالب" },
+          { "en": "Dedicated Account Manager", "ar": "مدير حساب مخصص" },
+          { "en": "Unlimited Days", "ar": "أيام غير محدودة" }
+        ],
+        "features": [
+          { "name": { "en": "Student Management", "ar": "إدارة الطلاب" }, "included": true },
+          { "name": { "en": "Academics Management", "ar": "إدارة الشؤون الأكاديمية" }, "included": true },
+          { "name": { "en": "Slider Management", "ar": "إدارة شريط التمرير" }, "included": true },
+          { "name": { "en": "Teacher Management", "ar": "إدارة المعلمين" }, "included": true },
+          { "name": { "en": "Session Year Management", "ar": "إدارة السنة الدراسية" }, "included": true },
+          { "name": { "en": "Holiday Management", "ar": "إدارة العطلات" }, "included": true },
+          { "name": { "en": "Timetable Management", "ar": "إدارة الجداول الزمنية" }, "included": true },
+          { "name": { "en": "Attendance Management", "ar": "إدارة الحضور" }, "included": true },
+          { "name": { "en": "Exam Management", "ar": "إدارة الامتحانات" }, "included": true },
+          { "name": { "en": "Lesson Management", "ar": "إدارة الدروس" }, "included": true },
+          { "name": { "en": "Assignment Management", "ar": "إدارة الواجبات" }, "included": true },
+          { "name": { "en": "Library Management", "ar": "إدارة المكتبة" }, "included": true },
+          { "name": { "en": "Hostel Management", "ar": "إدارة السكن" }, "included": true },
+          { "name": { "en": "Parent Portal", "ar": "بوابة أولياء الأمور" }, "included": true },
+          { "name": { "en": "Custom Domain", "ar": "نطاق مخصص" }, "included": true },
+          { "name": { "en": "Priority Support", "ar": "دعم فني ذو أولوية" }, "included": true },
+          { "name": { "en": "Advanced Analytics", "ar": "تحليلات متقدمة" }, "included": true },
+          { "name": { "en": "Data Export", "ar": "تصدير البيانات" }, "included": true }
+        ],
+        "highlighted": true
+      }
+    ]
+  },
+  "faq": {
+    "title": { "en": "Frequently Asked Questions", "ar": "الأسئلة الشائعة" },
+    "items": [
+      {
+        "question": { "en": "What is Skooture.ai?", "ar": "ما هو Skooture.ai؟" },
+        "answer": { "en": "Skooture.ai is a comprehensive school management system powered by AI, designed to streamline administrative tasks, enhance communication, and improve the overall educational experience.", "ar": "Skooture.ai هو نظام إدارة مدرسي شامل مدعوم بالذكاء الاصطناعي، مصمم لتبسيط المهام الإدارية، وتعزيز التواصل، وتحسين التجربة التعليمية الشاملة." }
+      },
+      {
+        "question": { "en": "Who can use Skooture.ai?", "ar": "من يمكنه استخدام Skooture.ai؟" },
+        "answer": { "en": "Our platform is built for:\n\nSchool Administrators (for managing staff, fees, reports, etc.)\nTeachers (for assignments, grading, communication)\nStudents (for accessing materials, homework, results)\nParents (to stay informed about their child's progress)", "ar": "منصتنا مصممة من أجل:\n\nمديري المدارس (لإدارة الموظفين، الرسوم، التقارير، إلخ)\nالمعلمين (للواجبات، الدرجات، التواصل)\nالطلاب (للوصول إلى المواد، الواجبات المنزلية، النتائج)\nأولياء الأمور (للبقاء على اطلاع بتقدم أطفالهم)" }
+      },
+      {
+        "question": { "en": "Is Skooture.ai free to use?", "ar": "هل استخدام Skooture.ai مجاني؟" },
+        "answer": { "en": "We offer flexible pricing packages tailored to the needs of different institutions. Please refer to our pricing section or contact sales for detailed information.", "ar": "نحن نقدم باقات تسعير مرنة مصممة خصيصاً لتلبية احتياجات المؤسسات المختلفة. يرجى الرجوع إلى قسم الأسعار أو الاتصال بالمبيعات للحصول على معلومات مفصلة." }
+      },
+      {
+        "question": { "en": "What makes Skooture.ai different from other school systems?", "ar": "ما الذي يميز Skooture.ai عن الأنظمة المدرسية الأخرى؟" },
+        "answer": { "en": "Skooture.ai integrates advanced AI capabilities at its core, automating repetitive tasks, providing actionable insights, and offering a highly intuitive and customizable user interface.", "ar": "يدمج Skooture.ai قدرات الذكاء الاصطناعي المتقدمة في جوهره، مما يؤدي إلى أتمتة المهام المتكررة، وتوفير رؤى قابلة للتنفيذ، وتقديم واجهة مستخدم بديهية للغاية وقابلة للتخصيص." }
+      },
+      {
+        "question": { "en": "Can I customize the system for my school?", "ar": "هل يمكنني تخصيص النظام لمدرستي؟" },
+        "answer": { "en": "Yes, Skooture.ai is highly customizable. You can tailor modules, roles, and settings to perfectly align with your institution's specific workflows and requirements.", "ar": "نعم، Skooture.ai قابل للتخصيص بدرجة كبيرة. يمكنك تخصيص الوحدات والأدوار والإعدادات لتتوافق تماماً مع سير العمل والمتطلبات الخاصة بمؤسستك." }
+      },
+      {
+        "question": { "en": "Is my school data safe?", "ar": "هل بيانات مدرستي آمنة؟" },
+        "answer": { "en": "Data security is our top priority. We employ industry-standard encryption, regular backups, and strict access controls to ensure your school's data remains safe and confidential.", "ar": "أمن البيانات هو أولويتنا القصوى. نحن نستخدم تشفير متوافق مع معايير الصناعة، ونسخ احتياطي منتظم، وضوابط وصول صارمة لضمان بقاء بيانات مدرستك آمنة وسرية." }
+      },
+      {
+        "question": { "en": "Does Skooture.ai support Arabic and other languages?", "ar": "هل يدعم Skooture.ai اللغة العربية ولغات أخرى؟" },
+        "answer": { "en": "Yes, Skooture.ai offers full multilingual support, including comprehensive RTL (Right-to-Left) support for Arabic, ensuring a seamless experience for all users.", "ar": "نعم، يقدم Skooture.ai دعماً كاملاً للغات المتعددة، بما في ذلك الدعم الشامل للغة العربية (من اليمين إلى اليسار)، مما يضمن تجربة سلسة لجميع المستخدمين." }
+      },
+      {
+        "question": { "en": "How long does it take to set up Skooture.ai for my school?", "ar": "كم من الوقت يستغرق إعداد Skooture.ai لمدرستي؟" },
+        "answer": { "en": "Setup time varies depending on the size of your institution and data migration needs. However, our dedicated onboarding team ensures a smooth and rapid deployment process.", "ar": "يختلف وقت الإعداد حسب حجم مؤسستتك واحتياجات ترحيل البيانات. ومع ذلك، يضمن فريق الإعداد المخصص لدينا عملية نشر سلسة وسريعة." }
+      },
+      {
+        "question": { "en": "Can I try the platform before committing?", "ar": "هل يمكنني تجربة المنصة قبل الالتزام؟" },
+        "answer": { "en": "Yes, we offer a demo and a trial period so you can explore the features and benefits of Skooture.ai firsthand before making a decision.", "ar": "نعم، نحن نقدم عرضاً تجريبياً وفترة تجريبية حتى تتمكن من استكشاف ميزات وفوائد Skooture.ai بنفسك قبل اتخاذ قرار." }
+      },
+      {
+        "question": { "en": "How can I contact support?", "ar": "كيف يمكنني التواصل مع الدعم الفني؟" },
+        "answer": { "en": "Our support team is available via email, live chat, and phone. We also provide a comprehensive knowledge base and video tutorials for self-help.", "ar": "فريق الدعم لدينا متاح عبر البريد الإلكتروني والدردشة المباشرة والهاتف. كما نوفر قاعدة معرفية شاملة ودروس فيديو للمساعدة الذاتية." }
+      },
+      {
+        "question": { "en": "Is Skooture.ai suitable for small schools or only large institutions?", "ar": "هل Skooture.ai مناسب للمدارس الصغيرة أم للمؤسسات الكبيرة فقط؟" },
+        "answer": { "en": "Skooture.ai is scalable and designed to cater to educational institutions of all sizes, from small preschools to large multi-campus universities.", "ar": "Skooture.ai قابل للتطوير ومصمم لتلبية احتياجات المؤسسات التعليمية من جميع الأحجام، من دور الحضانة الصغيرة إلى الجامعات الكبيرة متعددة الفروع." }
+      }
+    ]
+  },
+  "cta": {
+    "title": { "en": "Ready to Transform Your Institution?", "ar": "هل أنت مستعد لتحويل مؤسستك التعليمية؟" },
+    "subtitle": { "en": "Join hundreds of schools already using Skooture.AI to shape the future of education.", "ar": "انضم إلى مئات المدارس التي تستخدم Skooture.AI بالفعل لتشكيل مستقبل التعليم." },
+    "button": { "en": "Book a Demo", "ar": "احجز عرضاً تجريبياً" }
+  }
+}
