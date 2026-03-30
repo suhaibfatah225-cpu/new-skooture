@@ -10,27 +10,17 @@ import contentRoutes from './routes/content';
 import messagesRoutes from './routes/messages';
 
 const app = express();
-
-const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-
-app.use(cors({
-  origin: [
-    frontendUrl,
-    'http://localhost:5173'
-  ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
-
 export const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
+// CORS - Allow all origins for production
 app.use(cors({
-  origin: true, // Allow all origins in development
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
+
 app.use(express.json({ limit: '10mb' }));
 
 // Health check
