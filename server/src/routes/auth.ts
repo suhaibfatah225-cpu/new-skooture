@@ -2,31 +2,27 @@ import { Router } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
-import { prisma } from '../index.js';
+import { prisma } from '../index';
+import { JWT_SECRET, authMiddleware, AuthRequest } from '../middleware/auth';
 
 const router = Router();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-key-change-in-production';
-
-// Validation schemas
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
 });
 
-// Login
+// POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = loginSchema.parse(req.body);
 
     const user = await prisma.user.findUnique({ where: { email } });
-
     if (!user) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
     const validPassword = await bcrypt.compare(password, user.passwordHash);
-
     if (!validPassword) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
@@ -39,11 +35,7 @@ router.post('/login', async (req, res) => {
 
     res.json({
       token,
-      user: {
-        id: user.id,
-        email: user.email,
-        role: user.role,
-      },
+      user: { id: user.id, email: user.email, role: user.role },
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -54,20 +46,11 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Get current user
-router.get('/me', async (req, res) => {
+// GET /api/auth/me
+router.get('/me', authMiddleware, async (req: AuthRequest, res) => {
   try {
-    const authHeader = req.headers.authorization;
-    
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'No token provided' });
-    }
-
-    const token = authHeader.substring(7);
-    const decoded = jwt.verify(token, JWT_SECRET) as { userId: string };
-
     const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
+      where: { id: req.userId },
       select: { id: true, email: true, role: true, createdAt: true },
     });
 
@@ -77,26 +60,21 @@ router.get('/me', async (req, res) => {
 
     res.json(user);
   } catch (error) {
-    if (error instanceof jwt.JsonWebTokenError) {
-      return res.status(401).json({ error: 'Invalid token' });
-    }
     console.error('Get user error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Verify token
+// GET /api/auth/verify
 router.get('/verify', async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
-    
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({ valid: false });
     }
 
     const token = authHeader.substring(7);
     jwt.verify(token, JWT_SECRET);
-
     res.json({ valid: true });
   } catch {
     res.status(401).json({ valid: false });

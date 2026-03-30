@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContent } from '../context/ContentContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { logout } from '../api/client';
 
 import { getAdminSections } from '../constants/adminSections';
 import { useAdminContent } from '../hooks/useAdminContent';
@@ -24,13 +25,15 @@ import MessagesSection from '../components/admin/sections/MessagesSection';
 import SettingsSection from '../components/admin/sections/SettingsSection';
 
 export default function Admin() {
-  const { content, setContent, resetToDefault, adminLanguage, setAdminLanguage, messages } = useContent();
+  const { content, setContent, resetToDefault, adminLanguage, setAdminLanguage, messages, refreshMessages } = useContent();
   const { adminTheme, setAdminTheme } = useTheme();
   const navigate = useNavigate();
 
   const [activeSection, setActiveSection] = useState('hero');
   const [isSaved, setIsSaved] = useState(false);
   const { localContent, updateNestedContent } = useAdminContent(content);
+
+  useEffect(() => { refreshMessages(); }, [refreshMessages]);
 
   const sections = getAdminSections(adminLanguage, messages.length);
   const isRTL = adminLanguage === 'ar';
@@ -42,7 +45,7 @@ export default function Admin() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('skooture_admin_session');
+    logout();
     navigate('/login');
   };
 

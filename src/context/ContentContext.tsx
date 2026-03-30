@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import defaultContent from '../content.json';
+import * as api from '../api/client';
 
 type Language = 'en' | 'ar';
 
@@ -9,6 +10,7 @@ interface Message {
   email: string;
   message: string;
   timestamp: number;
+  createdAt?: string;
 }
 
 interface ContentContextType {
@@ -22,12 +24,12 @@ interface ContentContextType {
   t: (obj: { en: string; ar: string } | string) => string;
   messages: Message[];
   addMessage: (msg: Omit<Message, 'id' | 'timestamp'>) => void;
+  refreshMessages: () => Promise<void>;
+  deleteMessage: (id: string) => Promise<void>;
+  isContentLoading: boolean;
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
-
-const CONTENT_STORAGE_KEY = 'skooture_content_v1';
-const MESSAGES_STORAGE_KEY = 'skooture_messages';
 
 export function ContentProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(() => {
@@ -40,31 +42,36 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     return (saved as Language) || 'en';
   });
 
-  const [messages, setMessages] = useState<Message[]>(() => {
-    const saved = localStorage.getItem(MESSAGES_STORAGE_KEY);
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [content, setContentState] = useState(defaultContent);
+  const [isContentLoading, setIsContentLoading] = useState(true);
 
-  const [content, setContentState] = useState(() => {
-    const saved = localStorage.getItem(CONTENT_STORAGE_KEY);
-    if (!saved) return defaultContent;
-    
+  // Fetch content from API on mount
+  useEffect(() => {
+    api.getContent()
+      .then((data) => setContentState(data as typeof defaultContent))
+      .catch(() => setContentState(defaultContent))
+      .finally(() => setIsContentLoading(false));
+  }, []);
+
+  // Fetch messages if authenticated
+  const refreshMessages = useCallback(async () => {
     try {
-      const parsed = JSON.parse(saved);
-      if (parsed.traction && !Array.isArray(parsed.traction)) {
-        parsed.traction = Object.entries(parsed.traction).map(([key, value]: [string, any]) => ({
-          ...value,
-          key
-        }));
-      }
-      if (!parsed.topFeatures) {
-         parsed.topFeatures = defaultContent.topFeatures;
-      }
-      return parsed;
-    } catch (e) {
-      return defaultContent;
+      const msgs = await api.getMessages();
+      setMessages(msgs.map((m: any) => ({
+        ...m,
+        timestamp: new Date(m.createdAt).getTime(),
+      })));
+    } catch {
+      // Not authenticated or server error — keep local state
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem('skooture_token')) {
+      refreshMessages();
+    }
+  }, [refreshMessages]);
 
   useEffect(() => {
     const isDashboard = window.location.pathname.startsWith('/admin');
@@ -77,29 +84,51 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('skooture_admin_language', adminLanguage);
   }, [language, adminLanguage]);
 
-  const setContent = (newContent: typeof defaultContent) => {
+  const setContent = async (newContent: typeof defaultContent) => {
     setContentState(newContent);
-    localStorage.setItem(CONTENT_STORAGE_KEY, JSON.stringify(newContent));
+    try {
+      await api.updateContent(newContent);
+    } catch (err) {
+      console.error('Failed to save content to server:', err);
+    }
   };
 
   const setAdminLanguage = (lang: Language) => {
     setAdminLanguageState(lang);
   };
 
-  const resetToDefault = () => {
+  const resetToDefault = async () => {
     setContentState(defaultContent);
-    localStorage.removeItem(CONTENT_STORAGE_KEY);
+    try {
+      await api.resetContent();
+    } catch (err) {
+      console.error('Failed to reset content on server:', err);
+    }
   };
 
-  const addMessage = (msg: Omit<Message, 'id' | 'timestamp'>) => {
-    const newMessage: Message = {
-      ...msg,
-      id: Math.random().toString(36).substr(2, 9),
-      timestamp: Date.now()
-    };
-    const updated = [newMessage, ...messages];
-    setMessages(updated);
-    localStorage.setItem(MESSAGES_STORAGE_KEY, JSON.stringify(updated));
+  const addMessage = async (msg: Omit<Message, 'id' | 'timestamp'>) => {
+    try {
+      const created = await api.sendMessage({
+        name: msg.name,
+        email: msg.email,
+        message: msg.message,
+      });
+      setMessages(prev => [{
+        ...created,
+        timestamp: new Date(created.createdAt).getTime(),
+      }, ...prev]);
+    } catch (err) {
+      console.error('Failed to send message:', err);
+    }
+  };
+
+  const deleteMsg = async (id: string) => {
+    try {
+      await api.deleteMessage(id);
+      setMessages(prev => prev.filter(m => m.id !== id));
+    } catch (err) {
+      console.error('Failed to delete message:', err);
+    }
   };
 
   const t = (obj: any) => {
@@ -121,7 +150,10 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       resetToDefault, 
       t,
       messages,
-      addMessage
+      addMessage,
+      refreshMessages,
+      deleteMessage: deleteMsg,
+      isContentLoading,
     }}>
       {children}
     </ContentContext.Provider>

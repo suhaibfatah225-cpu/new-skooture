@@ -74,7 +74,7 @@ export default function Hero() {
               whileTap={{ scale: 0.98 }}
               className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-2xl shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center justify-center gap-4 group text-left"
             >
-              <div className="flex flex-col leading-tight">
+              <div className="flex leading-tight">
                 {language === 'en' ? (
                   <><span>Book a</span><span>Demo</span></>
                 ) : (
@@ -89,7 +89,7 @@ export default function Hero() {
               whileTap={{ scale: 0.98 }}
               className="w-full sm:w-auto px-10 py-5 rounded-2xl glass dark:bg-white/5 border-white/20 text-zinc-900 dark:text-white font-bold text-lg hover:bg-white/90 dark:hover:bg-white/10 transition-all flex items-center justify-center text-left"
             >
-              <div className="flex flex-col leading-tight">
+              <div className="flex leading-tight">
                 {language === 'en' ? (
                   <><span>Explore</span><span>Platform</span></>
                 ) : (
