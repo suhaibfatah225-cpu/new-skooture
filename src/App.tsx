@@ -4,7 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Landing from './pages/Landing';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './components/shared/ProtectedRoute';
 
 export default function App() {
   return (

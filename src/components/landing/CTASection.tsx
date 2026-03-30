@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useContent } from '../context/ContentContext';
+import { useContent } from '../../context/ContentContext';
 import { ArrowRight } from 'lucide-react';
 
 export default function CTASection() {

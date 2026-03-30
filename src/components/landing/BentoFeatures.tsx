@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { useContent } from '../context/ContentContext';
-import DynamicIcon from './DynamicIcon';
+import { useContent } from '../../context/ContentContext';
+import DynamicIcon from '../shared/DynamicIcon';
 
 export default function BentoFeatures() {
   const { content, t } = useContent();

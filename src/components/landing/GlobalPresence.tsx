@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { useContent } from '../context/ContentContext';
+import { useContent } from '../../context/ContentContext';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const geoUrl = "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
 

@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { useContent } from '../context/ContentContext';
-import DynamicIcon from './DynamicIcon';
+import { useContent } from '../../context/ContentContext';
+import DynamicIcon from '../shared/DynamicIcon';
 
 function Counter({ value, label, iconName, delay }: { value: number; label: string; iconName: string; delay: number }) {
   const ref = useRef(null);

@@ -1,6 +1,6 @@
 import { LucideIcon, LogOut } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useContent } from '../../context/ContentContext';
+import { useContent } from '../../../context/ContentContext';
 
 interface SidebarProps {
   sections: {

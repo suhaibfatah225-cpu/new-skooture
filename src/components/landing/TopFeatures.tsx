@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useContent } from '../context/ContentContext';
+import { useContent } from '../../context/ContentContext';
 import { 
   GraduationCap, 
   BookOpen, 

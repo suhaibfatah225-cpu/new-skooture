@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useContent } from '../context/ContentContext';
-import { useTheme } from '../context/ThemeContext';
+import { useContent } from '../../context/ContentContext';
+import { useTheme } from '../../context/ThemeContext';
 import { Globe, Settings, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
 

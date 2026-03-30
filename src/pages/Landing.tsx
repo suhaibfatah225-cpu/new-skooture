@@ -1,19 +1,19 @@
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import TrustedBy from '../components/TrustedBy';
-import Traction from '../components/Traction';
-import Legacy from '../components/Legacy';
-import WhySection from '../components/WhySection';
-import BentoFeatures from '../components/BentoFeatures';
-import GlobalPresence from '../components/GlobalPresence';
-import AICore from '../components/AICore';
-import TopFeatures from '../components/TopFeatures';
-import Testimonials from '../components/Testimonials';
-import Pricing from '../components/Pricing';
-import FAQ from '../components/FAQ';
-import Contact from '../components/Contact';
-import CTASection from '../components/CTASection';
-import Footer from '../components/Footer';
+import Navbar from '../components/landing/Navbar';
+import Hero from '../components/landing/Hero';
+import TrustedBy from '../components/landing/TrustedBy';
+import Traction from '../components/landing/Traction';
+import Legacy from '../components/landing/Legacy';
+import WhySection from '../components/landing/WhySection';
+import BentoFeatures from '../components/landing/BentoFeatures';
+import GlobalPresence from '../components/landing/GlobalPresence';
+import AICore from '../components/landing/AICore';
+import TopFeatures from '../components/landing/TopFeatures';
+import Testimonials from '../components/landing/Testimonials';
+import Pricing from '../components/landing/Pricing';
+import FAQ from '../components/landing/FAQ';
+import Contact from '../components/landing/Contact';
+import CTASection from '../components/landing/CTASection';
+import Footer from '../components/landing/Footer';
 
 export default function Landing() {
   return (

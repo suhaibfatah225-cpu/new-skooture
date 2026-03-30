@@ -1,4 +1,4 @@
-import { useContent } from '../context/ContentContext';
+import { useContent } from '../../context/ContentContext';
 
 export default function Footer() {
   const { content, language } = useContent();
