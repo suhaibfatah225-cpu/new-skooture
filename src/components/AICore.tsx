@@ -1,57 +1,70 @@
 import { motion } from 'framer-motion';
 import { useContent } from '../context/ContentContext';
-import { Brain, Settings, MessageSquare } from 'lucide-react';
-
-const icons = [Brain, Settings, MessageSquare];
+import DynamicIcon from './DynamicIcon';
 
 export default function AICore() {
   const { content, t } = useContent();
 
   return (
-    <section className="py-32 bg-zinc-50 dark:bg-zinc-950 relative border-t border-zinc-200 dark:border-zinc-900 overflow-hidden transition-colors duration-300">
+    <section id="features" className="py-32 bg-white dark:bg-zinc-950 relative overflow-hidden transition-colors duration-500">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 -right-1/4 w-[50%] h-[50%] bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 -left-1/4 w-[50%] h-[50%] bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-[120px]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-20">
+        <div className="flex flex-col items-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-500/5 border border-blue-100 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6"
+          >
+            {t({ en: 'AI Powered', ar: 'مدعوم بالذكاء الاصطناعي' })}
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6 transition-colors duration-300"
+            className="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white text-center leading-tight mb-6"
           >
             {t(content.aiCore.title)}
           </motion.h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full" />
+          <div className="w-24 h-1.5 bg-blue-600 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {content.aiCore.features.map((feature, index) => {
-            const Icon = icons[index % icons.length];
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                className="group relative p-8 rounded-3xl bg-white/80 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md dark:shadow-none"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-500/10 dark:to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative z-10 flex flex-col space-y-6">
-                  <div className="w-16 h-16 rounded-2xl bg-zinc-50 dark:bg-zinc-800 flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-[0_0_15px_rgba(0,0,0,0.05)] dark:shadow-[0_0_30px_rgba(0,0,0,0.3)]">
-                    <Icon className="w-8 h-8 text-blue-500 dark:text-blue-400 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors duration-500" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all duration-500">
-                    {t(feature.title)}
-                  </h3>
-                  
-                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed group-hover:text-zinc-800 dark:group-hover:text-zinc-300 transition-colors duration-500">
-                    {t(feature.description)}
-                  </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {content.aiCore.features.map((feature: any, index: number) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative h-full"
+            >
+              <div className="absolute inset-0 bg-blue-600/10 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="glass-card h-full p-10 rounded-[2.5rem] flex flex-col items-start transition-all duration-500 group-hover:-translate-y-3 group-hover:border-blue-500/30">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-10 shadow-lg shadow-blue-500/25 group-hover:scale-110 transition-transform duration-500">
+                  <DynamicIcon name={feature.icon} className="w-7 h-7 text-white" />
                 </div>
-              </motion.div>
-            );
-          })}
+                
+                <h3 className="text-2xl font-black text-zinc-900 dark:text-white mb-5 transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  {t(feature.title)}
+                </h3>
+                
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
+                  {t(feature.description)}
+                </p>
+
+                <div className="mt-10 pt-8 border-t border-zinc-100 dark:border-white/5 w-full">
+                  <span className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                    {t({ en: 'Learn More', ar: 'تعرف على المزيد' })} →
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

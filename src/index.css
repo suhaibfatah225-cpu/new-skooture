@@ -1,48 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Inter", "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Cairo", ui-sans-serif, system-ui, sans-serif;
   
-  /* Custom Dark Mode Theme Overrides */
-  --color-zinc-950: rgb(17, 24, 39);
-  --color-zinc-900: rgb(31, 41, 55);
-  --color-zinc-800: rgb(55, 65, 81);
-  --color-zinc-700: rgb(75, 85, 99);
+  /* Custom Dark Mode Theme Overrides - Refined Zinc Palette */
+  --color-zinc-950: #09090b; 
+  --color-zinc-900: #18181b; 
+  --color-zinc-800: #27272a;
+  --color-zinc-700: #3f3f46;
+  
+  /* Modern Multi-Layered Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-premium: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -4px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
+  --shadow-card: 
+    0 0 0 1px rgba(0, 0, 0, 0.03),
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 12px 24px rgba(0, 0, 0, 0.03);
+  --shadow-card-dark:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 12px 24px rgba(0, 0, 0, 0.2);
   
   --animate-blob: blob 7s infinite;
-  
+  --animate-float: float 6s ease-in-out infinite;
+
   @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
   }
 }
 
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
 
 body {
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar for Pricing Component */
+.glass {
+  @apply bg-white/70 dark:bg-zinc-950/60 backdrop-blur-xl border border-zinc-200/50 dark:border-white/10;
+}
+
+.glass-card {
+  @apply bg-white/40 dark:bg-white/[0.02] backdrop-blur-md border border-zinc-200/50 dark:border-white/10 shadow-card dark:shadow-card-dark;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 dark:bg-zinc-800 rounded-full hover:bg-zinc-400 dark:hover:bg-zinc-700 transition-colors;
+}
+
+/* RTL Specific Overrides for Cairo font */
+[dir="rtl"] {
+  font-family: "Cairo", sans-serif;
+  letter-spacing: 0;
+}
+
 .pricing-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -50,9 +90,6 @@ body {
   background: transparent;
 }
 .pricing-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #0f766e; /* teal-700 */
+  background-color: #3b82f6; /* blue-500 */
   border-radius: 10px;
-}
-.dark .pricing-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #0d9488; /* teal-600 */
 }

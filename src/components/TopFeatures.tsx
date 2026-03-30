@@ -60,9 +60,9 @@ export default function TopFeatures() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-24 h-1 bg-teal-600 mx-auto rounded-full relative"
+            className="w-24 h-1 bg-blue-600 mx-auto rounded-full relative"
           >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-teal-600 rounded-full ring-4 ring-white dark:ring-zinc-950" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-600 rounded-full ring-4 ring-white dark:ring-zinc-950" />
           </motion.div>
         </div>
 
@@ -82,16 +82,16 @@ export default function TopFeatures() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.2 }}
-                  className="group flex items-center p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden"
+                  className="group flex items-center p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 rounded-2xl shadow-sm hover:shadow-card dark:hover:shadow-card-dark transition-all duration-300 relative overflow-hidden"
                 >
                   {/* Left accent line */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-teal-600 rounded-l-xl" />
+                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-blue-600 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   
-                  <div className="ml-4 mr-4 flex items-center justify-center w-12 h-12 rounded-lg bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 group-hover:scale-110 transition-transform duration-300">
+                  <div className="ml-4 mr-4 flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-blue-100/50 dark:border-blue-500/10">
                     <Icon className="w-6 h-6" strokeWidth={1.5} />
                   </div>
                   
-                  <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                  <span className="font-bold text-zinc-800 dark:text-zinc-200 tracking-tight">
                     {t(item)}
                   </span>
                 </motion.div>
@@ -107,7 +107,7 @@ export default function TopFeatures() {
         >
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="px-8 py-3 bg-teal-700 hover:bg-teal-800 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 active:scale-95"
+            className="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-xl shadow-blue-500/20 transition-all duration-300 active:scale-95"
           >
             {isExpanded ? t(features.buttonLess) : t(features.buttonMore)}
           </button>

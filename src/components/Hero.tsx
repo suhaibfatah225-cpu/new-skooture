@@ -1,81 +1,108 @@
 import { motion } from 'framer-motion';
 import { useContent } from '../context/ContentContext';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function Hero() {
   const { content, t, language } = useContent();
 
   return (
-    <div id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-zinc-50 dark:bg-zinc-950 pt-32 pb-24 transition-colors duration-300">
-      {/* Background Video */}
+    <div id="home" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-[#020617] pt-32 pb-24 transition-colors duration-500">
+      {/* Aurora Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-600/20 dark:bg-blue-500/10 rounded-full blur-[120px] animate-blob" />
+        <div className="absolute top-[10%] -right-[10%] w-[40%] h-[40%] bg-purple-600/20 dark:bg-purple-500/10 rounded-full blur-[120px] animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-[10%] left-[20%] w-[50%] h-[50%] bg-indigo-600/20 dark:bg-indigo-500/10 rounded-full blur-[120px] animate-blob animation-delay-4000" />
+      </div>
+
+      {/* Background Video with refined mask */}
       {content.hero?.videoUrl && (
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          src={content.hero.videoUrl}
-        />
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-20 dark:opacity-30"
+            src={content.hero.videoUrl}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white dark:from-[#020617] dark:via-transparent dark:to-[#020617]" />
+        </div>
       )}
       
-      {/* Overlay for Video Contrast (Light/Dark) */}
-      <div className="absolute inset-0 bg-white/80 dark:bg-zinc-950/70 transition-colors duration-300" />
-
-      {/* Background Gradients (Keep them subtle over the video) */}
-      <div className="absolute inset-0 w-full h-full opacity-50">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/30 rounded-full mix-blend-screen filter blur-[128px] animate-blob" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-600/30 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-2000" />
-        <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-indigo-600/30 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-4000" />
-      </div>
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" 
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23474747' stroke-width='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} 
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="space-y-8"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-300 text-sm font-medium mb-8 shadow-sm backdrop-blur-md transition-colors duration-300">
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            {language === 'en' ? 'The Evolution of Smart Schools' : 'تطور المدارس الذكية'}
-          </div>
+          {/* Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-10 shadow-xl shadow-blue-500/5 animate-float"
+          >
+            <Sparkles size={14} className="animate-pulse" />
+            {t(content.hero.topBadge)}
+          </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white max-w-5xl mx-auto leading-tight drop-shadow-lg transition-colors duration-300">
-            {t(content.hero.headline)}
+          {/* Heading */}
+          <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-zinc-900 dark:text-white max-w-5xl mx-auto leading-[1.1] mb-8">
+            <span className="block">{t(content.hero.headline).includes('—') ? t(content.hero.headline).split('—')[0] : t(content.hero.headline)}</span>
+            {t(content.hero.headline).includes('—') && (
+              <span className="text-gradient block mt-2">
+                {t(content.hero.headline).split('—')[1]}
+              </span>
+            )}
           </h1>
           
-          <p className="mt-6 text-xl md:text-2xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed drop-shadow-md transition-colors duration-300">
+          {/* Subheading */}
+          <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
             {t(content.hero.subheadline)}
           </p>
 
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 pb-12">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full max-w-2xl mx-auto">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full overflow-hidden transition-all hover:shadow-[0_0_40px_rgba(79,70,229,0.6)]"
+              whileHover={{ scale: 1.02, translateY: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-blue-600 text-white font-bold text-lg shadow-2xl shadow-blue-600/20 hover:bg-blue-700 transition-all flex items-center justify-center gap-4 group text-left"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                {t(content.hero.buttons?.demo || { en: 'Book a Demo', ar: 'احجز عرضاً تجريبياً' })}
-                <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${language === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
-              </span>
-              <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="flex flex-col leading-tight">
+                {language === 'en' ? (
+                  <><span>Book a</span><span>Demo</span></>
+                ) : (
+                  <><span>احجز عرضاً</span><span>تجريبياً</span></>
+                )}
+              </div>
+              <ArrowRight className={`transition-transform group-hover:translate-x-1 ${language === 'ar' ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
             </motion.button>
+            
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-zinc-900 dark:text-white bg-white/50 dark:bg-white/10 border border-zinc-300 dark:border-white/20 hover:bg-white/80 dark:hover:bg-white/20 backdrop-blur-md rounded-full overflow-hidden transition-all duration-300 shadow-sm"
+              whileHover={{ scale: 1.02, translateY: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto px-10 py-5 rounded-2xl glass dark:bg-white/5 border-white/20 text-zinc-900 dark:text-white font-bold text-lg hover:bg-white/90 dark:hover:bg-white/10 transition-all flex items-center justify-center text-left"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                {t(content.hero.buttons?.explore || { en: 'Explore Platform', ar: 'استكشف المنصة' })}
-              </span>
+              <div className="flex flex-col leading-tight">
+                {language === 'en' ? (
+                  <><span>Explore</span><span>Platform</span></>
+                ) : (
+                  <><span>استكشف</span><span>المنصة</span></>
+                )}
+              </div>
             </motion.button>
           </div>
         </motion.div>
       </div>
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] dark:bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)] pointer-events-none transition-colors duration-300" />
+      {/* Decorative Blur Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-[#020617] to-transparent pointer-events-none" />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useContent } from '../context/ContentContext';
 import { useTheme } from '../context/ThemeContext';
 import { Globe, Settings, Sun, Moon } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Navbar() {
   const { content, language, setLanguage } = useContent();
@@ -23,7 +24,7 @@ export default function Navbar() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -32,88 +33,74 @@ export default function Navbar() {
     { id: 'features', label: { en: 'Features', ar: 'المميزات' } },
     { id: 'pricing', label: { en: 'Pricing', ar: 'الأسعار' } },
     { id: 'faq', label: { en: 'FAQ', ar: 'الأسئلة الشائعة' } },
+    { id: 'contact', label: { en: 'Contact', ar: 'تواصل معنا' } },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200/50 dark:border-zinc-800/50 shadow-sm'
-          : 'bg-transparent border-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center">
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 cursor-pointer">
+    <div className="fixed top-0 w-full z-50 flex justify-center px-4 pt-6 pointer-events-none">
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`pointer-events-auto transition-all duration-500 ease-in-out px-6 flex items-center justify-between gap-8 h-16 rounded-full border shadow-2xl ${
+          isScrolled 
+            ? 'glass w-full max-w-5xl shadow-blue-500/10' 
+            : 'bg-transparent border-transparent w-full max-w-7xl'
+        }`}
+      >
+        <div className="flex items-center">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            className="group flex items-center gap-3 cursor-pointer"
+          >
+            <div className="relative">
+              <div className="absolute inset-0 bg-blue-500 blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
               {content.brand?.logoUrl ? (
-                <img src={content.brand.logoUrl} alt="Skooture.AI" className="h-10 object-contain" referrerPolicy="no-referrer" />
+                <img src={content.brand.logoUrl} alt="Logo" className="h-10 object-contain relative z-10" referrerPolicy="no-referrer" />
               ) : (
-                <>
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-xl">S</span>
-                  </div>
-                  <span className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${isScrolled ? 'text-zinc-900 dark:text-white' : 'text-zinc-900 dark:text-white'}`}>
-                    Skooture.AI
-                  </span>
-                </>
+                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center relative z-10 shadow-lg">
+                  <span className="text-white font-bold text-xl">S</span>
+                </div>
               )}
-            </button>
-          </div>
-          
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.id)}
-                className={`text-sm font-semibold tracking-wide transition-colors cursor-pointer hover:text-blue-500 ${
-                  isScrolled 
-                    ? 'text-zinc-600 dark:text-zinc-300' 
-                    : 'text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white'
-                }`}
-              >
-                {language === 'en' ? link.label.en : link.label.ar}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-4">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-full transition-colors cursor-pointer ${
-                isScrolled
-                  ? 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
-                  : 'text-zinc-800 dark:text-zinc-200 hover:bg-black/5 dark:hover:bg-white/10'
-              }`}
-              aria-label="Toggle theme"
-            >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-            </button>
-            <button
-              onClick={toggleLanguage}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors cursor-pointer ${
-                isScrolled
-                  ? 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
-                  : 'text-zinc-800 dark:text-zinc-200 hover:bg-black/5 dark:hover:bg-white/10'
-              }`}
-            >
-              <Globe className="w-4 h-4" />
-              <span className="hidden sm:inline">{language === 'en' ? 'العربية' : 'English'}</span>
-            </button>
-            <button
-              onClick={() => window.location.href = '/admin'}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-colors cursor-pointer ${
-                isScrolled
-                  ? 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
-                  : 'text-zinc-800 dark:text-zinc-200 hover:bg-black/5 dark:hover:bg-white/10'
-              }`}
-            >
-              <Settings className="w-4 h-4" />
-              <span className="hidden sm:inline">{language === 'en' ? 'Admin' : 'الإدارة'}</span>
-            </button>
-          </div>
+            </div>
+          </button>
         </div>
-      </div>
-    </nav>
+        
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className="text-[13px] font-bold tracking-wider uppercase text-zinc-500 dark:text-zinc-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all cursor-pointer relative group"
+            >
+              {language === 'en' ? link.label.en : link.label.ar}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full" />
+            </button>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-1 sm:gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer"
+          >
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+          <button
+            onClick={toggleLanguage}
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-zinc-100 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 hover:bg-blue-500 hover:text-white transition-all cursor-pointer"
+          >
+            <Globe size={14} />
+            {language === 'en' ? 'العربية' : 'English'}
+          </button>
+          <button
+            onClick={() => window.location.href = '/admin'}
+            className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 hover:scale-105 transition-all cursor-pointer"
+          >
+            <Settings size={14} />
+            <span className="hidden sm:inline">{language === 'en' ? 'Dashboard' : 'الإدارة'}</span>
+          </button>
+        </div>
+      </motion.nav>
+    </div>
   );
 }

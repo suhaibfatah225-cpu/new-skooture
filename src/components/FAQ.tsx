@@ -15,7 +15,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-white dark:bg-zinc-900 relative border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
+    <section id="faq" className="py-24 bg-zinc-50 dark:bg-zinc-950 relative border-t border-zinc-200 dark:border-zinc-900 transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -32,9 +32,9 @@ export default function FAQ() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-full max-w-md h-0.5 bg-teal-800 mx-auto relative"
+            className="w-24 h-1 bg-blue-600 mx-auto rounded-full relative"
           >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-teal-600 rounded-full ring-4 ring-white dark:ring-zinc-900" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-600 rounded-full ring-4 ring-zinc-50 dark:ring-zinc-950" />
           </motion.div>
         </div>
 
@@ -50,27 +50,27 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className={`border rounded-xl overflow-hidden transition-all duration-300 ${
+                className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
                   isOpen 
-                    ? 'border-teal-700 dark:border-teal-600 shadow-md' 
-                    : 'border-zinc-200 dark:border-zinc-800 hover:border-teal-300 dark:hover:border-teal-800'
+                    ? 'border-blue-500/50 dark:border-blue-500/30 shadow-lg shadow-blue-500/10' 
+                    : 'border-zinc-200 dark:border-white/5 hover:border-blue-500/30 shadow-card dark:shadow-card-dark'
                 }`}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className={`w-full flex items-center justify-between p-5 text-left transition-colors duration-300 ${
+                  className={`w-full flex items-center justify-between p-6 text-left transition-colors duration-300 ${
                     isOpen 
-                      ? 'bg-teal-700 dark:bg-teal-800 text-white' 
+                      ? 'bg-blue-600 text-white' 
                       : 'bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200'
                   }`}
                 >
                   <span className="font-semibold pr-8">
                     {index + 1}. {t(item.question)}
                   </span>
-                  <span className={`shrink-0 flex items-center justify-center w-6 h-6 rounded-full transition-colors duration-300 ${
+                  <span className={`shrink-0 flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-300 ${
                     isOpen 
-                      ? 'bg-transparent text-white' 
-                      : 'bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400'
+                      ? 'bg-white/20 text-white' 
+                      : 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400'
                   }`}>
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </span>
@@ -84,7 +84,7 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="p-5 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-t border-teal-100 dark:border-teal-900/50 whitespace-pre-line">
+                      <div className="p-6 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-t border-blue-100 dark:border-blue-900/30 whitespace-pre-line leading-relaxed">
                         {t(item.answer)}
                       </div>
                     </motion.div>

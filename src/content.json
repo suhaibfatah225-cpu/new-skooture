@@ -3,10 +3,14 @@
     "logoUrl": "https://skooture.ai/storage/super-admin/system-settings/69738ddd57f6d9.609751151769180637.png"
   },
   "hero": {
+    "topBadge": {
+      "en": "The Evolution of Smart Schools",
+      "ar": "تطور المدارس الذكية"
+    },
     "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-network-connection-background-27896-large.mp4",
     "headline": {
       "en": "Building the future of education since 2010—Reimagined for the AI Era.",
-      "ar": "نبني مستقبل التعليم منذ 2010 - أعدنا تصوره لعصر الذكاء الاصطناعي."
+      "ar": "نبني مستقبل التعليم منذ 2010 — أعدنا تصوره لعصر الذكاء الاصطناعي."
     },
     "subheadline": {
       "en": "From serving millions with Smart Schools to pioneering a global AI infrastructure. Skooture is the next evolution in EdTech.",
@@ -37,57 +41,43 @@
       "https://cdn.jsdelivr.net/gh/gilbarbara/logos@master/logos/samsung.svg"
     ]
   },
-  "traction": {
-    "entities": {
+  "traction": [
+    {
       "value": 49,
-      "label": {
-        "en": "Educational Entities",
-        "ar": "كيان تعليمي"
-      }
+      "label": { "en": "Educational Entities", "ar": "كيان تعليمي" },
+      "icon": "School"
     },
-    "students": {
+    {
       "value": 120000,
-      "label": {
-        "en": "Active Students",
-        "ar": "طالب نشط"
-      }
+      "label": { "en": "Active Students", "ar": "طالب نشط" },
+      "icon": "Users"
     },
-    "teachers": {
+    {
       "value": 10000,
-      "label": {
-        "en": "Teachers",
-        "ar": "معلم"
-      }
+      "label": { "en": "Teachers", "ar": "معلم" },
+      "icon": "GraduationCap"
     },
-    "staff": {
+    {
       "value": 1500,
-      "label": {
-        "en": "Staff",
-        "ar": "موظف"
-      }
+      "label": { "en": "Staff", "ar": "موظف" },
+      "icon": "Briefcase"
     },
-    "parents": {
+    {
       "value": 240000,
-      "label": {
-        "en": "Parents",
-        "ar": "ولي أمر"
-      }
+      "label": { "en": "Parents", "ar": "ولي أمر" },
+      "icon": "Heart"
     },
-    "total": {
+    {
       "value": 500000,
-      "label": {
-        "en": "Total Users",
-        "ar": "إجمالي المستخدمين"
-      }
+      "label": { "en": "Total Users", "ar": "إجمالي المستخدمين" },
+      "icon": "Globe"
     },
-    "arr": {
+    {
       "value": 290000,
-      "label": {
-        "en": "ARR ($)",
-        "ar": "الإيرادات السنوية ($)"
-      }
+      "label": { "en": "ARR ($)", "ar": "الإيرادات السنوية ($)" },
+      "icon": "BarChart3"
     }
-  },
+  ],
   "legacy": {
     "title": {
       "en": "Our Legacy",
@@ -126,6 +116,13 @@
     "content": {
       "en": "We realized that incremental updates to legacy systems wouldn't suffice for the next generation of learning. We needed a scalable, global AI infrastructure to serve the next billion learners efficiently and intelligently.",
       "ar": "أدركنا أن التحديثات التدريجية للأنظمة القديمة لن تكفي للجيل القادم من التعلم. كنا بحاجة إلى بنية تحتية عالمية قابلة للتوسع تعتمد على الذكاء الاصطناعي لخدمة المليار متعلم القادم بكفاءة وذكاء."
+    },
+    "labels": {
+      "v1": "v1.0",
+      "legacySystem": { "en": "Legacy System", "ar": "النظام القديم" },
+      "monolithic": { "en": "Monolithic", "ar": "نظام موحد" },
+      "globalAi": { "en": "Global AI Infrastructure", "ar": "بنية تحتية عالمية للذكاء الاصطناعي" },
+      "scalable": { "en": "Scalable", "ar": "قابل للتوسع" }
     }
   },
   "global": {
@@ -134,24 +131,9 @@
       "ar": "التواجد العالمي"
     },
     "locations": [
-      {
-        "name": {
-          "en": "Egypt",
-          "ar": "مصر"
-        }
-      },
-      {
-        "name": {
-          "en": "UAE",
-          "ar": "الإمارات"
-        }
-      },
-      {
-        "name": {
-          "en": "London",
-          "ar": "لندن"
-        }
-      }
+      { "name": { "en": "Egypt", "ar": "مصر" } },
+      { "name": { "en": "UAE", "ar": "الإمارات" } },
+      { "name": { "en": "London", "ar": "لندن" } }
     ]
   },
   "aiCore": {
@@ -161,34 +143,19 @@
     },
     "features": [
       {
-        "title": {
-          "en": "Academic",
-          "ar": "أكاديمي"
-        },
-        "description": {
-          "en": "Personalized learning paths, predictive analytics for student success, and automated content generation.",
-          "ar": "مسارات تعلم مخصصة، وتحليلات تنبؤية لنجاح الطلاب، وإنشاء محتوى آلي."
-        }
+        "title": { "en": "Academic", "ar": "أكاديمي" },
+        "description": { "en": "Personalized learning paths, predictive analytics for student success, and automated content generation.", "ar": "مسارات تعلم مخصصة، وتحليلات تنبؤية لنجاح الطلاب، وإنشاء محتوى آلي." },
+        "icon": "Brain"
       },
       {
-        "title": {
-          "en": "Operations",
-          "ar": "العمليات"
-        },
-        "description": {
-          "en": "Automated scheduling, intelligent resource allocation, and streamlined administrative workflows.",
-          "ar": "جدولة آلية، وتوزيع ذكي للموارد، وسير عمل إداري مبسط."
-        }
+        "title": { "en": "Operations", "ar": "العمليات" },
+        "description": { "en": "Automated scheduling, intelligent resource allocation, and streamlined administrative workflows.", "ar": "جدولة آلية، وتوزيع ذكي للموارد، وسير عمل إداري مبسط." },
+        "icon": "Settings"
       },
       {
-        "title": {
-          "en": "Communication",
-          "ar": "التواصل"
-        },
-        "description": {
-          "en": "Intelligent sentiment analysis, automated reporting, and proactive parent engagement tools.",
-          "ar": "تحليل ذكي للمشاعر، وتقارير آلية، وأدوات استباقية لإشراك أولياء الأمور."
-        }
+        "title": { "en": "Communication", "ar": "التواصل" },
+        "description": { "en": "Intelligent sentiment analysis, automated reporting, and proactive parent engagement tools.", "ar": "تحليل ذكي للمشاعر، وتقارير آلية، وأدوات استباقية لإشراك أولياء الأمور." },
+        "icon": "MessageSquare"
       }
     ]
   },
@@ -238,19 +205,23 @@
     "features": [
       {
         "title": { "en": "Personalized Learning Paths", "ar": "مسارات تعليمية مخصصة" },
-        "description": { "en": "AI adapts to each student's pace and learning style in real-time.", "ar": "يتكيف الذكاء الاصطناعي مع سرعة وأسلوب تعلم كل طالب في الوقت الفعلي." }
+        "description": { "en": "AI adapts to each student's pace and learning style in real-time.", "ar": "يتكيف الذكاء الاصطناعي مع سرعة وأسلوب تعلم كل طالب في الوقت الفعلي." },
+        "icon": "Sparkles"
       },
       {
         "title": { "en": "Predictive Analytics", "ar": "تحليلات تنبؤية" },
-        "description": { "en": "Identify at-risk students before they fall behind with 95% accuracy.", "ar": "تحديد الطلاب المعرضين للخطر قبل تأخرهم بدقة تصل إلى 95%." }
+        "description": { "en": "Identify at-risk students before they fall behind with 95% accuracy.", "ar": "تحديد الطلاب المعرضين للخطر قبل تأخرهم بدقة تصل إلى 95%." },
+        "icon": "Activity"
       },
       {
         "title": { "en": "Automated Grading", "ar": "تصحيح آلي" },
-        "description": { "en": "Save teachers 15+ hours a week with intelligent assessment tools.", "ar": "توفير أكثر من 15 ساعة أسبوعياً للمعلمين باستخدام أدوات التقييم الذكية." }
+        "description": { "en": "Save teachers 15+ hours a week with intelligent assessment tools.", "ar": "توفير أكثر من 15 ساعة أسبوعياً للمعلمين باستخدام أدوات التقييم الذكية." },
+        "icon": "CheckCircle"
       },
       {
         "title": { "en": "Real-time Parent Insights", "ar": "رؤى فورية لأولياء الأمور" },
-        "description": { "en": "Keep parents engaged with automated, actionable progress reports.", "ar": "إبقاء أولياء الأمور على اطلاع بتقارير تقدم تلقائية وقابلة للتنفيذ." }
+        "description": { "en": "Keep parents engaged with automated, actionable progress reports.", "ar": "إبقاء أولياء الأمور على اطلاع بتقارير تقدم تلقائية وقابلة للتنفيذ." },
+        "icon": "Users"
       }
     ]
   },

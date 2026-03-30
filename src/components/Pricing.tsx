@@ -40,9 +40,9 @@ export default function Pricing() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="w-24 h-1 bg-teal-600 mx-auto rounded-full relative"
+            className="w-24 h-1 bg-blue-600 mx-auto rounded-full relative"
           >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-teal-600 rounded-full ring-4 ring-zinc-50 dark:ring-zinc-950" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-600 rounded-full ring-4 ring-zinc-50 dark:ring-zinc-950" />
           </motion.div>
         </div>
 
@@ -61,30 +61,29 @@ export default function Pricing() {
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.9, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className={`relative flex flex-col rounded-2xl overflow-hidden ${
+                className={`relative flex flex-col rounded-[2.5rem] overflow-hidden transition-all duration-300 ${
                   plan.highlighted 
-                    ? 'bg-[#dbeafe] dark:bg-slate-800 border-0' 
-                    : 'bg-white dark:bg-zinc-900 border-4 border-slate-700 dark:border-slate-600'
+                    ? 'bg-blue-600 text-white shadow-2xl shadow-blue-500/20 border-0' 
+                    : 'bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 shadow-card dark:shadow-card-dark hover:border-blue-500/30'
                 }`}
               >
                 {/* Ribbon Badge */}
                 <div 
-                  className={`absolute top-4 ${ribbonPositionClass} py-1.5 text-white text-sm font-bold shadow-md z-10 ${
-                    plan.highlighted ? 'bg-teal-700' : 'bg-slate-600'
+                  className={`absolute top-6 ${ribbonPositionClass} py-1.5 text-[10px] uppercase tracking-widest font-black shadow-md z-10 rounded-full ${
+                    plan.highlighted ? 'bg-white text-blue-600' : 'bg-blue-600 text-white'
                   }`}
-                  style={{ clipPath: ribbonClipPath }}
                 >
                   {t(plan.badge)}
                 </div>
 
                 {/* Card Header */}
-                <div className={`p-8 pb-4 ${isRTL ? 'pl-24' : 'pr-24'}`}>
-                  <h3 className={`text-2xl font-bold mb-4 ${plan.highlighted ? 'text-teal-800 dark:text-teal-400' : 'text-slate-800 dark:text-slate-200'}`}>
+                <div className={`p-10 pb-4 ${isRTL ? 'pl-24' : 'pr-24'}`}>
+                  <h3 className={`text-3xl font-black mb-4 tracking-tight ${plan.highlighted ? 'text-white' : 'text-zinc-900 dark:text-white'}`}>
                     {t(plan.name)}
                   </h3>
                   <div className="space-y-2 mb-6">
                     {plan.details.map((detail: any, i: number) => (
-                      <p key={i} className={`text-sm ${plan.highlighted ? 'text-slate-700 dark:text-slate-300' : 'text-slate-600 dark:text-slate-400'}`}>
+                      <p key={i} className={`text-sm font-medium ${plan.highlighted ? 'text-blue-50/80' : 'text-zinc-500 dark:text-zinc-400'}`}>
                         {t(detail)}
                       </p>
                     ))}
@@ -92,19 +91,19 @@ export default function Pricing() {
                 </div>
 
                 {/* Features List */}
-                <div className="flex-1 px-8 pb-8 overflow-hidden flex flex-col">
+                <div className="flex-1 px-10 pb-10 overflow-hidden flex flex-col">
                   <div className={`flex-1 overflow-y-auto pricing-scrollbar max-h-[320px] space-y-4 ${isRTL ? 'pl-2' : 'pr-2'}`}>
                     {plan.features.map((feature: any, i: number) => (
-                      <div key={i} className="flex items-start gap-3">
+                      <div key={i} className="flex items-start gap-4">
                         {feature.included ? (
-                          <CheckCircle2 className="w-5 h-5 text-teal-600 dark:text-teal-500 shrink-0 mt-0.5" />
+                          <CheckCircle2 className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlighted ? 'text-white' : 'text-blue-600 dark:text-blue-400'}`} />
                         ) : (
-                          <XCircle className="w-5 h-5 text-red-400/50 dark:text-red-500/50 shrink-0 mt-0.5" />
+                          <XCircle className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlighted ? 'text-blue-300/40' : 'text-zinc-300 dark:text-zinc-700'}`} />
                         )}
-                        <span className={`text-sm ${
+                        <span className={`text-sm font-medium ${
                           feature.included 
-                            ? (plan.highlighted ? 'text-slate-800 dark:text-slate-200' : 'text-slate-700 dark:text-slate-300')
-                            : 'text-slate-400 dark:text-slate-500 line-through'
+                            ? (plan.highlighted ? 'text-white' : 'text-zinc-700 dark:text-zinc-300')
+                            : (plan.highlighted ? 'text-blue-300/40 line-through' : 'text-zinc-300 dark:text-zinc-700 line-through')
                         }`}>
                           {t(feature.name)}
                         </span>
@@ -113,10 +112,10 @@ export default function Pricing() {
                   </div>
 
                   {/* CTA Button */}
-                  <button className={`mt-8 w-full py-3 rounded-full font-semibold transition-all duration-300 ${
+                  <button className={`mt-10 w-full py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-300 shadow-xl ${
                     plan.highlighted
-                      ? 'bg-white dark:bg-zinc-900 border-2 border-white dark:border-zinc-900 text-teal-700 dark:text-teal-400 hover:bg-transparent hover:border-teal-700 dark:hover:border-teal-400 hover:text-teal-800 dark:hover:text-teal-300'
-                      : 'bg-transparent border-2 border-slate-700 dark:border-slate-500 text-slate-700 dark:text-slate-300 hover:bg-slate-700 dark:hover:bg-slate-600 hover:text-white dark:hover:text-white'
+                      ? 'bg-white text-blue-600 hover:scale-[1.02] active:scale-[0.98]'
+                      : 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white hover:scale-[1.02] active:scale-[0.98]'
                   }`}>
                     {t(pricing.button)}
                   </button>
@@ -128,15 +127,15 @@ export default function Pricing() {
 
         {/* Pagination Dots */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-12">
+          <div className="flex justify-center items-center gap-3 mt-16">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentPage(i)}
-                className={`h-3 rounded-full transition-all duration-300 ${
+                className={`h-2.5 rounded-full transition-all duration-500 ${
                   currentPage === i
-                    ? 'w-8 bg-teal-600 dark:bg-teal-500'
-                    : 'w-3 bg-slate-300 dark:bg-slate-700 hover:bg-teal-400 cursor-pointer'
+                    ? 'w-10 bg-blue-600'
+                    : 'w-2.5 bg-zinc-200 dark:bg-zinc-800 hover:bg-blue-400 cursor-pointer'
                 }`}
                 aria-label={`Go to page ${i + 1}`}
               />

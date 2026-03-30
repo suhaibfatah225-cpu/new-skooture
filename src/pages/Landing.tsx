@@ -11,6 +11,7 @@ import TopFeatures from '../components/TopFeatures';
 import Testimonials from '../components/Testimonials';
 import Pricing from '../components/Pricing';
 import FAQ from '../components/FAQ';
+import Contact from '../components/Contact';
 import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 
@@ -31,6 +32,7 @@ export default function Landing() {
         <Testimonials />
         <Pricing />
         <FAQ />
+        <Contact />
         <CTASection />
       </main>
       <Footer />
