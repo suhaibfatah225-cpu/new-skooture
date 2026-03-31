@@ -11,11 +11,13 @@ import messagesRoutes from './routes/messages';
 
 const app = express();
 export const prisma = new PrismaClient();
+
+// مهم جداً: Railway يمرر المنفذ عبر متغير بيئة
 const PORT = process.env.PORT || 3001;
 
-// CORS - Allow all origins for production
+// CORS - إعدادات مرنة للموقع
 app.use(cors({
-  origin: true,
+  origin: true, // يسمح لجميع المصادر حالياً لحل مشكلة الـ CORS نهائياً
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -23,7 +25,7 @@ app.use(cors({
 
 app.use(express.json({ limit: '10mb' }));
 
-// Health check
+// Health check - للتأكد أن السيرفر يعمل
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
@@ -39,7 +41,7 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// تعديل هام جداً لـ Railway: الاستماع على 0.0.0.0
+app.listen(Number(PORT), '0.0.0.0', () => {
+  console.log(`🚀 Server is ready and listening on port ${PORT}`);
 });
