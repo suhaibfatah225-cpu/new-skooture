@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
+import { prisma } from './lib/prisma';
 
 dotenv.config();
 
@@ -10,9 +10,6 @@ import contentRoutes from './routes/content';
 import messagesRoutes from './routes/messages';
 
 const app = express();
-export const prisma = new PrismaClient();
-
-// مهم جداً: Railway يمرر المنفذ عبر متغير بيئة
 const PORT = process.env.PORT || 3001;
 
 // CORS - إعدادات مرنة للموقع
@@ -35,10 +32,14 @@ app.use('/api/auth', authRoutes);
 app.use('/api/content', contentRoutes);
 app.use('/api/messages', messagesRoutes);
 
-// Error handler
+// Error handler - محسّن ليظهر تفاصيل الخطأ في Railway logs
 app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
+  console.error('🔴 Global Error Handler:', err.message);
+  console.error('Stack:', err.stack);
+  res.status(500).json({ 
+    error: 'Internal Server Error',
+    message: process.env.NODE_ENV === 'production' ? 'Something went wrong' : err.message
+  });
 });
 
 // تعديل هام جداً لـ Railway: الاستماع على 0.0.0.0
