@@ -30,6 +30,18 @@ interface ContentContextType {
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
+const CONTENT_BROADCAST_CHANNEL = 'skooture-content-sync';
+
+const broadcastContentChange = (payload: { type: 'content-updated' }) => {
+  if (typeof BroadcastChannel === 'undefined') return;
+  try {
+    const channel = new BroadcastChannel(CONTENT_BROADCAST_CHANNEL);
+    channel.postMessage(payload);
+    channel.close();
+  } catch {
+    // Browser may not support BroadcastChannel or an error occurred.
+  }
+};
 
 export function ContentProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(() => {
@@ -52,6 +64,53 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       .then((data) => setContentState(data as typeof defaultContent))
       .catch(() => setContentState(defaultContent))
       .finally(() => setIsContentLoading(false));
+  }, []);
+
+  // Listen for content updates from other tabs/windows
+  useEffect(() => {
+    if (typeof BroadcastChannel === 'undefined') return;
+    const channel = new BroadcastChannel(CONTENT_BROADCAST_CHANNEL);
+
+    channel.onmessage = (event) => {
+      if (event.data?.type === 'content-updated') {
+        api.getContent()
+          .then((data) => setContentState(data as typeof defaultContent))
+          .catch(() => {
+            // keep existing state when fetch fails
+          });
+      }
+    };
+
+    return () => channel.close();
+  }, []);
+
+  // Listen for real-time updates from Server-Sent Events (SSE)
+  useEffect(() => {
+    const sse = new EventSource(`${api.API_BASE}/content/stream`);
+
+    sse.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === 'content-updated') {
+          api.getContent()
+            .then((latestContent) => {
+              setContentState((prev) => {
+                const prevString = JSON.stringify(prev);
+                const latestString = JSON.stringify(latestContent);
+                if (prevString !== latestString) {
+                  return latestContent as typeof defaultContent;
+                }
+                return prev;
+              });
+            })
+            .catch(() => {});
+        }
+      } catch (err) {
+        // ignore parse errors
+      }
+    };
+
+    return () => sse.close();
   }, []);
 
   // Fetch messages if authenticated
@@ -86,8 +145,13 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
   const setContent = async (newContent: typeof defaultContent) => {
     setContentState(newContent);
+
+    // Notify other tabs immediately and after save success
+    broadcastContentChange({ type: 'content-updated' });
+
     try {
       await api.updateContent(newContent);
+      broadcastContentChange({ type: 'content-updated' });
     } catch (err) {
       console.error('Failed to save content to server:', err);
     }
@@ -99,8 +163,11 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
   const resetToDefault = async () => {
     setContentState(defaultContent);
+    broadcastContentChange({ type: 'content-updated' });
+
     try {
       await api.resetContent();
+      broadcastContentChange({ type: 'content-updated' });
     } catch (err) {
       console.error('Failed to reset content on server:', err);
     }

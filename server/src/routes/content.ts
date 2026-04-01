@@ -1,9 +1,40 @@
-import { Router } from 'express';
+import { Router, Response } from 'express';
 import { prisma } from '../lib/prisma';
 import { authMiddleware, AuthRequest } from '../middleware/auth';
 import defaultContent from '../../default-content.json' with { type: 'json' };
 
 const router = Router();
+
+// Store connected SSE clients
+const clients = new Set<Response>();
+
+const notifyClients = () => {
+  for (const client of clients) {
+    client.write(`data: {"type":"content-updated"}\n\n`);
+  }
+};
+
+// GET /api/content/stream - public SSE endpoint
+router.get('/stream', (req, res) => {
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    // CORS headers need to allow credentials and specific origin if needed, but the global CORS usually covers it
+    // Some browsers strictly require Access-Control-Allow-Origin for SSE stream:
+  });
+
+  const sendPing = setInterval(() => {
+    res.write(':\n\n');
+  }, 15000);
+
+  clients.add(res);
+
+  req.on('close', () => {
+    clearInterval(sendPing);
+    clients.delete(res);
+  });
+});
 
 // GET /api/content - public
 router.get('/', async (_req, res) => {
@@ -52,6 +83,9 @@ router.put('/', authMiddleware, async (req: AuthRequest, res) => {
 
     await prisma.$transaction(operations);
 
+    // After successfully saving, notify all connected SSE clients
+    notifyClients();
+
     res.json({ success: true, message: 'Content updated' });
   } catch (error) {
     console.error('Update content error:', error);
@@ -63,6 +97,10 @@ router.put('/', authMiddleware, async (req: AuthRequest, res) => {
 router.post('/reset', authMiddleware, async (_req: AuthRequest, res) => {
   try {
     await prisma.content.deleteMany();
+    
+    // Notify all connected SSE clients
+    notifyClients();
+
     res.json({ success: true, message: 'Content reset to defaults' });
   } catch (error) {
     console.error('Reset content error:', error);
