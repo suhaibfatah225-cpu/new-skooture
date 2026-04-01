@@ -3,6 +3,7 @@ import { useContent } from '../context/ContentContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { logout } from '../api/client';
 
 import { getAdminSections } from '../constants/adminSections';
@@ -27,6 +28,7 @@ import SettingsSection from '../components/admin/sections/SettingsSection';
 export default function Admin() {
   const { content, setContent, resetToDefault, adminLanguage, setAdminLanguage, messages, refreshMessages } = useContent();
   const { adminTheme, setAdminTheme } = useTheme();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [activeSection, setActiveSection] = useState('hero');
@@ -35,7 +37,7 @@ export default function Admin() {
 
   useEffect(() => { refreshMessages(); }, [refreshMessages]);
 
-  const sections = getAdminSections(adminLanguage, messages.length);
+  const sections = getAdminSections(t, messages.length);
   const isRTL = adminLanguage === 'ar';
 
   const handleSave = () => {
@@ -54,7 +56,7 @@ export default function Admin() {
   const renderSection = () => {
     switch (activeSection) {
       case 'overview':
-        return <OverviewSection isRTL={isRTL} messages={messages} setActiveSection={setActiveSection} />;
+        return <OverviewSection messages={messages} setActiveSection={setActiveSection} />;
       case 'general':
         return <GeneralSection {...sectionProps} />;
       case 'hero':
@@ -92,7 +94,7 @@ export default function Admin() {
 
   return (
     <div
-      className={`min-h-screen bg-zinc-50 dark:bg-zinc-950 flex transition-colors duration-500 ${adminLanguage === 'ar' ? 'font-arabic flex-row' : 'flex-row'}`}
+      className={`min-h-screen bg-zinc-50 dark:bg-zinc-950 flex transition-colors duration-500 ${adminLanguage === 'ar' ? 'font-arabic flex-row-reverse' : 'flex-row'}`}
       dir={adminLanguage === 'ar' ? 'rtl' : 'ltr'}
     >
       <Sidebar
@@ -105,7 +107,6 @@ export default function Admin() {
       <main className="flex-1 overflow-y-auto max-h-screen scroll-smooth bg-[#f8fafc] dark:bg-zinc-950">
         <div className="max-w-6xl mx-auto px-8 py-10 space-y-10">
           <AdminHeader
-            adminLanguage={adminLanguage}
             activeSection={activeSection}
             sections={sections}
             isSaved={isSaved}

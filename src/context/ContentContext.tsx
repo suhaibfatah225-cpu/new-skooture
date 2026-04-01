@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import defaultContent from '../content.json';
 import * as api from '../api/client';
+import i18n from '../i18n';
 
 type Language = 'en' | 'ar';
 
@@ -136,6 +137,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     const isDashboard = window.location.pathname.startsWith('/admin');
     const currentLang = isDashboard ? adminLanguage : language;
 
+    void i18n.changeLanguage(currentLang);
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = currentLang;
     

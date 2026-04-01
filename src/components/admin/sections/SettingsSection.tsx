@@ -1,5 +1,6 @@
 import { Languages, Moon, User, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import type { Language } from '../../../types';
 
 interface SettingsSectionProps {
@@ -17,6 +18,8 @@ export default function SettingsSection({
   setAdminLanguage,
   setAdminTheme,
 }: SettingsSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       key="settings"
@@ -32,7 +35,7 @@ export default function SettingsSection({
             <Languages size={24} />
           </div>
           <div>
-            <h3 className="text-xl font-black text-zinc-900 dark:text-white">{isRTL ? 'لغة لوحة التحكم' : 'Dashboard Language'}</h3>
+            <h3 className="text-xl font-black text-zinc-900 dark:text-white">{t('admin.settings.dashboardLanguage')}</h3>
             <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">EN / AR</p>
           </div>
         </div>
@@ -59,8 +62,10 @@ export default function SettingsSection({
             <Moon size={24} />
           </div>
           <div>
-            <h3 className="text-xl font-black text-zinc-900 dark:text-white">{isRTL ? 'الوضع الداكن' : 'Dark Mode'}</h3>
-            <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">{adminTheme === 'dark' ? 'Dark' : 'Light'}</p>
+            <h3 className="text-xl font-black text-zinc-900 dark:text-white">{t('admin.settings.darkMode')}</h3>
+            <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">
+              {adminTheme === 'dark' ? t('admin.settings.dark') : t('admin.settings.light')}
+            </p>
           </div>
         </div>
         <button 
@@ -82,14 +87,14 @@ export default function SettingsSection({
             <User size={24} />
           </div>
           <div>
-            <h3 className="text-xl font-black text-zinc-900 dark:text-white">{isRTL ? 'الملف الشخصي' : 'Profile Settings'}</h3>
-            <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">Admin Account</p>
+            <h3 className="text-xl font-black text-zinc-900 dark:text-white">{t('admin.settings.profileSettings')}</h3>
+            <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mt-1">{t('admin.settings.adminAccount')}</p>
           </div>
         </div>
 
         <div className="space-y-6">
           <div className="space-y-2">
-            <label className="text-xs font-black text-zinc-400 uppercase tracking-widest ml-1">{isRTL ? 'الاسم' : 'Name'}</label>
+            <label className="text-xs font-black text-zinc-400 uppercase tracking-widest ml-1">{t('admin.settings.name')}</label>
             <div className="relative">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
               <input 
@@ -101,7 +106,7 @@ export default function SettingsSection({
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-black text-zinc-400 uppercase tracking-widest ml-1">{isRTL ? 'البريد الإلكتروني' : 'Email Address'}</label>
+            <label className="text-xs font-black text-zinc-400 uppercase tracking-widest ml-1">{t('admin.settings.emailAddress')}</label>
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
               <input 
@@ -113,7 +118,7 @@ export default function SettingsSection({
           </div>
 
           <button className="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:bg-blue-700 transition-all mt-4 cursor-pointer">
-            {isRTL ? 'حفظ التغييرات' : 'Save Profile'}
+            {t('admin.settings.saveProfile')}
           </button>
         </div>
       </div>

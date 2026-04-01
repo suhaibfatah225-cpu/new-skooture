@@ -1,5 +1,6 @@
 import { LucideIcon, LogOut } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useContent } from '../../../context/ContentContext';
 
 interface SidebarProps {
@@ -16,6 +17,7 @@ interface SidebarProps {
 
 export default function Sidebar({ sections, activeSection, setActiveSection, onLogout }: SidebarProps) {
   const { adminLanguage, content } = useContent();
+  const { t } = useTranslation();
   const isRTL = adminLanguage === 'ar';
 
   return (
@@ -40,7 +42,9 @@ export default function Sidebar({ sections, activeSection, setActiveSection, onL
               </div>
             )}
           </div>
-          <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest opacity-80">Platform Hub</span>
+          <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest opacity-80">
+            {t('admin.sidebar.platformHub')}
+          </span>
         </div>
       </div>
 
@@ -94,7 +98,7 @@ export default function Sidebar({ sections, activeSection, setActiveSection, onL
           className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-zinc-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-all font-black text-sm group cursor-pointer uppercase tracking-widest"
         >
           <LogOut size={18} className={`transition-transform ${isRTL ? 'group-hover:translate-x-1' : 'group-hover:-translate-x-1'}`} />
-          {isRTL ? 'خروج' : 'Logout Hub'}
+          {t('admin.sidebar.logout')}
         </button>
       </div>
     </div>

@@ -1,0 +1,62 @@
+{
+  "admin": {
+    "sections": {
+      "overview": "Dashboard Overview",
+      "general": "General Settings",
+      "hero": "Hero Section",
+      "traction": "Stats & Traction",
+      "legacy": "Our Legacy",
+      "features": "AI Features",
+      "topFeatures": "Top Features",
+      "testimonials": "Testimonials",
+      "pricing": "Pricing Plans",
+      "faq": "FAQ",
+      "messages": "User Messages",
+      "settings": "Portal Settings"
+    },
+    "sidebar": {
+      "platformHub": "Platform Hub",
+      "logout": "Logout Hub"
+    },
+    "header": {
+      "title": "Skooture Hub",
+      "resetEverything": "Reset Everything",
+      "updatePortal": "Update Portal",
+      "saved": "Saved",
+      "viewSite": "View Site",
+      "resetConfirmation": "Reset all changes to default?"
+    },
+    "settings": {
+      "dashboardLanguage": "Dashboard Language",
+      "darkMode": "Dark Mode",
+      "profileSettings": "Profile Settings",
+      "adminAccount": "Admin Account",
+      "name": "Name",
+      "emailAddress": "Email Address",
+      "saveProfile": "Save Profile",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "overview": {
+      "totalStudents": "Total Students",
+      "totalTeachers": "Total Teachers",
+      "schools": "Schools",
+      "articles": "Articles",
+      "editHero": "Edit Hero",
+      "editPlans": "Edit Plans",
+      "portalConfig": "Portal Config",
+      "recentMessages": "Recent Messages",
+      "viewAll": "View All",
+      "noRecentMessages": "No Recent Messages",
+      "quickActions": "Quick Actions",
+      "needHelp": "Need Help?",
+      "helpDescription": "Check our global support docs or contact tech team.",
+      "supportHub": "Support Hub"
+    },
+    "messages": {
+      "title": "User Messages",
+      "description": "View and manage messages sent through the Contact form.",
+      "empty": "No messages yet"
+    }
+  }
+}

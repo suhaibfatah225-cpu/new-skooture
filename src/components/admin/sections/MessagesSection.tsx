@@ -1,5 +1,6 @@
 import { MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import SectionWrapper from '../layout/SectionWrapper';
 import type { Message } from '../../../types';
 
@@ -9,13 +10,15 @@ interface MessagesSectionProps {
 }
 
 export default function MessagesSection({ messages, isRTL }: MessagesSectionProps) {
+  const { t } = useTranslation();
+
   return (
-    <SectionWrapper key="messages" title="User Messages" description="View and manage messages sent through the Contact form.">
+    <SectionWrapper key="messages" title={t('admin.messages.title')} description={t('admin.messages.description')}>
       <div className="space-y-6">
         {messages.length === 0 ? (
           <div className="text-center py-20 bg-white dark:bg-white/5 rounded-[2.5rem] border border-dashed border-zinc-200 dark:border-white/10">
             <MessageSquare className="w-12 h-12 mx-auto text-zinc-300 dark:text-zinc-600 mb-4" />
-            <p className="text-zinc-500 font-bold uppercase tracking-widest text-xs">No messages yet</p>
+            <p className="text-zinc-500 font-bold uppercase tracking-widest text-xs">{t('admin.messages.empty')}</p>
           </div>
         ) : (
           <div className="grid gap-4">

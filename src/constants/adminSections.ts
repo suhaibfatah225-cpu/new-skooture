@@ -12,21 +12,22 @@ import {
   Layout,
   MessageSquare,
 } from 'lucide-react';
-import type { AdminSection, Language } from '../types';
+import type { TFunction } from 'i18next';
+import type { AdminSection } from '../types';
 
-export function getAdminSections(adminLanguage: Language, messageCount: number): AdminSection[] {
+export function getAdminSections(t: TFunction, messageCount: number): AdminSection[] {
   return [
-    { id: 'overview', label: adminLanguage === 'ar' ? 'نظرة عامة' : 'Dashboard Overview', icon: LayoutDashboard },
-    { id: 'general', label: 'General Settings', icon: Layout },
-    { id: 'hero', label: 'Hero Section', icon: Type },
-    { id: 'traction', label: 'Stats & Traction', icon: BarChart3 },
-    { id: 'legacy', label: 'Our Legacy', icon: History },
-    { id: 'features', label: 'AI Features', icon: Zap },
-    { id: 'topFeatures', label: 'Top Features', icon: Target },
-    { id: 'testimonials', label: 'Testimonials', icon: Quote },
-    { id: 'pricing', label: 'Pricing Plans', icon: CreditCard },
-    { id: 'faq', label: 'FAQ', icon: HelpCircle },
-    { id: 'messages', label: 'User Messages', icon: MessageSquare, badge: messageCount },
-    { id: 'settings', label: 'Portal Settings', icon: Settings },
+    { id: 'overview', label: t('admin.sections.overview'), icon: LayoutDashboard },
+    { id: 'general', label: t('admin.sections.general'), icon: Layout },
+    { id: 'hero', label: t('admin.sections.hero'), icon: Type },
+    { id: 'traction', label: t('admin.sections.traction'), icon: BarChart3 },
+    { id: 'legacy', label: t('admin.sections.legacy'), icon: History },
+    { id: 'features', label: t('admin.sections.features'), icon: Zap },
+    { id: 'topFeatures', label: t('admin.sections.topFeatures'), icon: Target },
+    { id: 'testimonials', label: t('admin.sections.testimonials'), icon: Quote },
+    { id: 'pricing', label: t('admin.sections.pricing'), icon: CreditCard },
+    { id: 'faq', label: t('admin.sections.faq'), icon: HelpCircle },
+    { id: 'messages', label: t('admin.sections.messages'), icon: MessageSquare, badge: messageCount },
+    { id: 'settings', label: t('admin.sections.settings'), icon: Settings },
   ];
 }

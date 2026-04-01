@@ -1,0 +1,62 @@
+{
+  "admin": {
+    "sections": {
+      "overview": "نظرة عامة",
+      "general": "الإعدادات العامة",
+      "hero": "قسم الهيدر",
+      "traction": "الإحصائيات والزخم",
+      "legacy": "إرثنا",
+      "features": "مزايا الذكاء الاصطناعي",
+      "topFeatures": "أهم المزايا",
+      "testimonials": "آراء العملاء",
+      "pricing": "خطط الأسعار",
+      "faq": "الأسئلة الشائعة",
+      "messages": "رسائل المستخدمين",
+      "settings": "إعدادات البوابة"
+    },
+    "sidebar": {
+      "platformHub": "منصة الإدارة",
+      "logout": "تسجيل الخروج"
+    },
+    "header": {
+      "title": "نظام سكوتشر الذكي",
+      "resetEverything": "إعادة ضبط الكل",
+      "updatePortal": "تحديث البوابة",
+      "saved": "تم الحفظ",
+      "viewSite": "عرض الموقع",
+      "resetConfirmation": "إعادة كل التغييرات إلى الإعدادات الافتراضية؟"
+    },
+    "settings": {
+      "dashboardLanguage": "لغة لوحة التحكم",
+      "darkMode": "الوضع الداكن",
+      "profileSettings": "إعدادات الملف الشخصي",
+      "adminAccount": "حساب المدير",
+      "name": "الاسم",
+      "emailAddress": "البريد الإلكتروني",
+      "saveProfile": "حفظ الملف الشخصي",
+      "light": "فاتح",
+      "dark": "داكن"
+    },
+    "overview": {
+      "totalStudents": "إجمالي الطلاب",
+      "totalTeachers": "إجمالي المعلمين",
+      "schools": "المدارس",
+      "articles": "المنشورات",
+      "editHero": "تعديل الهيدر",
+      "editPlans": "تعديل الباقات",
+      "portalConfig": "إعدادات المنصة",
+      "recentMessages": "آخر الرسائل",
+      "viewAll": "عرض الكل",
+      "noRecentMessages": "لا توجد رسائل حديثة",
+      "quickActions": "إجراءات سريعة",
+      "needHelp": "تحتاج مساعدة؟",
+      "helpDescription": "راجع وثائق الدعم العالمية أو تواصل مع فريق التقنية.",
+      "supportHub": "الدعم الفني"
+    },
+    "messages": {
+      "title": "رسائل المستخدمين",
+      "description": "عرض وإدارة الرسائل المرسلة عبر نموذج التواصل.",
+      "empty": "لا توجد رسائل بعد"
+    }
+  }
+}

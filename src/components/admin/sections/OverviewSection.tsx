@@ -10,26 +10,27 @@ import {
   MessageSquare,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import type { Message } from '../../../types';
 
 interface OverviewSectionProps {
-  isRTL: boolean;
   messages: Message[];
   setActiveSection: (id: string) => void;
 }
 
-export default function OverviewSection({ isRTL, messages, setActiveSection }: OverviewSectionProps) {
+export default function OverviewSection({ messages, setActiveSection }: OverviewSectionProps) {
+  const { t } = useTranslation();
   const stats = [
-    { label: isRTL ? 'إجمالي الطلاب' : 'Total Students', value: '126,102', icon: GraduationCap, color: 'text-blue-600', bg: 'bg-blue-50' },
-    { label: isRTL ? 'إجمالي المعلمين' : 'Total Teachers', value: '23,096', icon: Users, color: 'text-purple-600', bg: 'bg-purple-50' },
-    { label: isRTL ? 'المدارس' : 'Schools', value: '30', icon: Layout, color: 'text-orange-600', bg: 'bg-orange-50' },
-    { label: isRTL ? 'المنشورات' : 'Articles', value: '5', icon: FileEdit, color: 'text-green-600', bg: 'bg-green-50' },
+    { label: t('admin.overview.totalStudents'), value: '126,102', icon: GraduationCap, color: 'text-blue-600', bg: 'bg-blue-50' },
+    { label: t('admin.overview.totalTeachers'), value: '23,096', icon: Users, color: 'text-purple-600', bg: 'bg-purple-50' },
+    { label: t('admin.overview.schools'), value: '30', icon: Layout, color: 'text-orange-600', bg: 'bg-orange-50' },
+    { label: t('admin.overview.articles'), value: '5', icon: FileEdit, color: 'text-green-600', bg: 'bg-green-50' },
   ];
 
   const quickActions = [
-    { id: 'hero', label: isRTL ? 'تعديل الهيدر' : 'Edit Hero', icon: Type },
-    { id: 'pricing', label: isRTL ? 'تعديل الباقات' : 'Edit Plans', icon: CreditCard },
-    { id: 'settings', label: isRTL ? 'إعدادات المنصة' : 'Portal Config', icon: Settings },
+    { id: 'hero', label: t('admin.overview.editHero'), icon: Type },
+    { id: 'pricing', label: t('admin.overview.editPlans'), icon: CreditCard },
+    { id: 'settings', label: t('admin.overview.portalConfig'), icon: Settings },
   ];
 
   return (
@@ -62,8 +63,8 @@ export default function OverviewSection({ isRTL, messages, setActiveSection }: O
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] p-8 shadow-sm border border-zinc-100 dark:border-white/5">
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-xl font-black text-zinc-900 dark:text-white">{isRTL ? 'آخر الرسائل' : 'Recent Messages'}</h3>
-              <button onClick={() => setActiveSection('messages')} className="text-blue-600 font-bold text-xs uppercase tracking-widest hover:underline cursor-pointer">{isRTL ? 'عرض الكل' : 'View All'}</button>
+              <h3 className="text-xl font-black text-zinc-900 dark:text-white">{t('admin.overview.recentMessages')}</h3>
+              <button onClick={() => setActiveSection('messages')} className="text-blue-600 font-bold text-xs uppercase tracking-widest hover:underline cursor-pointer">{t('admin.overview.viewAll')}</button>
             </div>
             
             <div className="space-y-4">
@@ -84,7 +85,7 @@ export default function OverviewSection({ isRTL, messages, setActiveSection }: O
               {messages.length === 0 && (
                 <div className="text-center py-10">
                   <MessageSquare className="mx-auto text-zinc-200 dark:text-zinc-800 mb-4" size={48} />
-                  <p className="text-zinc-400 font-bold uppercase tracking-widest text-xs">No Recent Messages</p>
+                  <p className="text-zinc-400 font-bold uppercase tracking-widest text-xs">{t('admin.overview.noRecentMessages')}</p>
                 </div>
               )}
             </div>
@@ -94,7 +95,7 @@ export default function OverviewSection({ isRTL, messages, setActiveSection }: O
         {/* Quick Actions */}
         <div className="space-y-6">
           <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] p-8 shadow-sm border border-zinc-100 dark:border-white/5">
-            <h3 className="text-xl font-black text-zinc-900 dark:text-white mb-8">{isRTL ? 'إجراءات سريعة' : 'Quick Actions'}</h3>
+            <h3 className="text-xl font-black text-zinc-900 dark:text-white mb-8">{t('admin.overview.quickActions')}</h3>
             <div className="grid grid-cols-1 gap-3">
               {quickActions.map((action, i) => (
                 <button
@@ -111,10 +112,10 @@ export default function OverviewSection({ isRTL, messages, setActiveSection }: O
 
           <div className="bg-blue-600 rounded-[2.5rem] p-8 shadow-xl shadow-blue-600/20 text-white relative overflow-hidden group">
             <Zap className="absolute -right-4 -bottom-4 text-white/10 w-32 h-32 rotate-12 group-hover:scale-110 transition-transform duration-700" />
-            <h3 className="text-xl font-black mb-4 relative z-10">{isRTL ? 'تحتاج مساعدة؟' : 'Need Help?'}</h3>
-            <p className="text-blue-100 text-sm font-medium mb-6 relative z-10 opacity-80">Check our global support docs or contact tech team.</p>
+            <h3 className="text-xl font-black mb-4 relative z-10">{t('admin.overview.needHelp')}</h3>
+            <p className="text-blue-100 text-sm font-medium mb-6 relative z-10 opacity-80">{t('admin.overview.helpDescription')}</p>
             <button className="bg-white text-blue-600 px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest relative z-10 hover:scale-105 transition-transform active:scale-95 shadow-lg shadow-black/10">
-              {isRTL ? 'الدعم الفني' : 'Support Hub'}
+              {t('admin.overview.supportHub')}
             </button>
           </div>
         </div>
